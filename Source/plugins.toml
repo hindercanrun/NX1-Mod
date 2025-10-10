@@ -1,0 +1,7 @@
+title_id = "4156089E" # nx1
+
+[[plugin]]
+	name = "NX1Gaming"
+	file = "NX1Gaming.xex"
+	hash = "CBFAA079004C987F" # 5-nx1mp_demo.exe
+	is_enabled = true

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Gamer\Util\Hook.cpp">
+      <Filter>Gamer\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Util\String.cpp">
+      <Filter>Gamer\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Main.cpp">
+      <Filter>Gamer</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Loader\ModulesLoader.cpp">
+      <Filter>Gamer\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Patches.cpp">
+      <Filter>Gamer\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Game\Symbols.cpp">
+      <Filter>Gamer\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Gamer\Util\Hook.h">
+      <Filter>Gamer\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Util\String.h">
+      <Filter>Gamer\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Std_Include.h">
+      <Filter>Gamer</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Loader\ModulesLoader.h">
+      <Filter>Gamer\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Patches.h">
+      <Filter>Gamer\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Game\Structs.h">
+      <Filter>Gamer\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Game\Symbols.h">
+      <Filter>Gamer\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Gamer">
+      <UniqueIdentifier>{001fee20-361f-437e-8988-db16e0ef955e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Util">
+      <UniqueIdentifier>{38bedf2d-f3ba-4a2d-a746-9e767caaed23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Loader">
+      <UniqueIdentifier>{266a252f-20c4-4000-871b-afc52e4d1c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Modules">
+      <UniqueIdentifier>{f87f4585-d1f3-4ea6-8800-fed8ed46570a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Game">
+      <UniqueIdentifier>{b8b14505-b6c2-46bf-aaa3-a113827b2b8c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

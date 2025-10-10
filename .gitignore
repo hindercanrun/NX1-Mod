@@ -1,0 +1,8 @@
+# Build results
+Source/Output/
+
+*.user
+*.sdf
+*.suo
+*.opensdf
+*.ipch

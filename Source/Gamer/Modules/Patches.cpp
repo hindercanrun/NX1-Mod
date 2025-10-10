@@ -1,0 +1,77 @@
+#include "../Std_Include.h"
+
+namespace Patches
+{
+	Util::Hook::Detour DB_InflateInit_Hook;
+	void DB_InflateInit(int fileIsSecure)
+	{
+		Symbols::DB_AuthLoad_InflateInit(&Symbols::g_load->stream, fileIsSecure, Symbols::g_load->p_file->name);
+	}
+
+	Util::Hook::Detour getBuildNumber_Hook;
+	const char* getBuildNumber()
+	{
+		return Util::String::va("1 01/05/2012 11:39:15 NX1GAMING");
+	}
+
+	void RegisterHooks()
+	{
+		// Allow unsigned fast files to load on MP
+		DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
+
+		// Allow access to the MP menus
+		Util::Hook::SetValue(0x822CC4A8, 0x60000000);
+
+		// set version to mine!
+		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
+
+		// fix console input
+		Util::Hook::SetValue(0x823A0914, 0x60000000);
+
+		// Completely disable Black Box
+		Util::Hook::SetValue(0x822DC5E4, 0x60000000); // BB_Init
+		Util::Hook::SetValue(0x822DD170, 0x60000000); // BB_Update
+
+		// Completely disable Anti Cheat
+		Util::Hook::SetValue(0x822DC6D4, 0x60000000); // LiveAntiCheat_Init
+		Util::Hook::SetValue(0x82429348, 0x60000000); // LiveAntiCheat_Pump
+		Util::Hook::SetValue(0x823A5BF4, 0x60000000); // LiveAntiCheat_Update
+		Util::Hook::SetValue(0x823A44A0, 0x60000000); // LiveAntiCheat_UserSignedInToLive
+		Util::Hook::SetValue(0x8225A9F8, 0x60000000); // LiveAntiCheat_UserSignedOut
+		Util::Hook::SetValue(0x824290D4, 0x60000000); // LiveAntiCheat_OnChallengesReceived
+
+		// Disable debug memory tracking
+		Util::Hook::SetValue(0x823A6270, 0x60000000); // track_init
+
+		*(char*)0x82019534 = '\0'; // Remove 'Build 445 xenon' from the console window as it's not needed
+
+		// Below are just your general string edits.
+		// Example:
+		// Utils::Hook::SetString(<address>, <string>); // <comment> (optional)
+
+		Util::Hook::SetString(0x820195B4, "NX1 GAMING "); // NX1 GAMER !!!!!!
+		Util::Hook::SetString(0x8201953C, "Build 1866586"); // shorten that string!
+
+		// Below are just your general dvar value edits.
+		// Example:
+		// Utils::Hook::SetValue(<address>, <value>); // <comment> (optional)
+
+		Util::Hook::SetValue(0x824D563C, 0x38800000); // Force r_vsync to 0
+		Util::Hook::SetValue(0x822D9B88, 0x38800000); // Force com_maxfps to 0
+	}
+
+	void UnregisterHooks()
+	{
+		DB_InflateInit_Hook.Clear();
+	}
+
+	void Load()
+	{
+		RegisterHooks();
+	}
+
+	void Unload()
+	{
+		UnregisterHooks();
+	}
+}
