@@ -19,9 +19,6 @@ namespace Patches
 		// Allow unsigned fast files to load on MP
 		DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
 
-		// Allow access to the MP menus
-		Util::Hook::SetValue(0x822CC4A8, 0x60000000);
-
 		// set version to mine!
 		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
 
@@ -56,8 +53,9 @@ namespace Patches
 		// Example:
 		// Utils::Hook::SetValue(<address>, <value>); // <comment> (optional)
 
-		Util::Hook::SetValue(0x824D563C, 0x38800000); // Force r_vsync to 0
-		Util::Hook::SetValue(0x822D9B88, 0x38800000); // Force com_maxfps to 0
+		Util::Hook::SetValue(0x824D563C, 0x38800000); // r_vsync 0
+		Util::Hook::SetValue(0x822D9B88, 0x38800000); // com_maxfps 0
+		Util::Hook::SetValue(0x823A1358, 0x38800001); // xblive_playEvenIfDown 1
 	}
 
 	void UnregisterHooks()
