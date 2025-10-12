@@ -44,18 +44,29 @@ namespace Patches
 
 		// Below are just your general string edits.
 		// Example:
-		// Utils::Hook::SetString(<address>, <string>); // <comment> (optional)
+		// Util::Hook::SetString(<address>, <string>); // <comment> (optional)
 
 		Util::Hook::SetString(0x820195B4, "NX1 GAMING "); // NX1 GAMER !!!!!!
 		Util::Hook::SetString(0x8201953C, "Build 1866586"); // shorten that string!
 
 		// Below are just your general dvar value edits.
 		// Example:
-		// Utils::Hook::SetValue(<address>, <value>); // <comment> (optional)
+		// Util::Hook::SetValue(<address>, <value>); // <comment> (optional)
 
 		Util::Hook::SetValue(0x824D563C, 0x38800000); // r_vsync 0
 		Util::Hook::SetValue(0x822D9B88, 0x38800000); // com_maxfps 0
+
+		// access to the mp menus
+		// TODO: private matches dont work as intended
 		Util::Hook::SetValue(0x823A1358, 0x38800001); // xblive_playEvenIfDown 1
+
+		// kill com_statmon, it looks ugly
+		Util::Hook::SetValue(0x822D9C68, 0x38800000);
+		Util::Hook::SetValue(0x824D6AE4, 0x38800000);
+
+		// set cg_debugInfoCornerOffset to be 1, 1 so it looks nicer
+		Util::Hook::SetValue<uint32_t>(0x8214C56C, 0xFC400090);
+		Util::Hook::SetValue<uint32_t>(0x8214C574, 0xFC200090);
 	}
 
 	void UnregisterHooks()
