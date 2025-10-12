@@ -25,6 +25,9 @@ namespace Patches
 		// fix console input
 		Util::Hook::SetValue(0x823A0914, 0x60000000);
 
+		// fix xray shader bug in scoreboard
+		Util::Hook::SetValue(0x821637A4, 0x60000000);
+
 		// Completely disable Black Box
 		Util::Hook::SetValue(0x822DC5E4, 0x60000000); // BB_Init
 		Util::Hook::SetValue(0x822DD170, 0x60000000); // BB_Update
