@@ -19,6 +19,9 @@
     <ClCompile Include="Gamer\Game\Symbols.cpp">
       <Filter>Gamer\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Gamer\Util\Command.cpp">
+      <Filter>Gamer\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer\Util\Hook.h">
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="Gamer\Game\Symbols.h">
       <Filter>Gamer\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Util\Command.h">
+      <Filter>Gamer\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

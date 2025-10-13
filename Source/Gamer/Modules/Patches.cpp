@@ -8,6 +8,14 @@ namespace Patches
 		Symbols::DB_AuthLoad_InflateInit(&Symbols::g_load->stream, fileIsSecure, Symbols::g_load->p_file->name);
 	}
 
+	void Com_PrintMessage(int channel, const char *msg)
+	{
+		if (msg[0] == '^' && msg[1] != '\0')
+			msg += 2;
+
+		Symbols::CL_ConsolePrint(0, 0, msg, 0, 0, 0);
+	}
+
 	Util::Hook::Detour getBuildNumber_Hook;
 	const char* getBuildNumber()
 	{
@@ -16,8 +24,13 @@ namespace Patches
 
 	void RegisterHooks()
 	{
+		Com_PrintMessage(0, "Mod loaded!\n NX1 GAMING !!!!!");
+
 		// Allow unsigned fast files to load on MP
 		DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
+
+		// disable xlive data getting popup, this will make the xbox live menus fully accessible
+		//Util::Hook::SetValue(0x822CC4A8, 0x60000000);
 
 		// set version to mine!
 		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
@@ -25,7 +38,7 @@ namespace Patches
 		// fix console input
 		Util::Hook::SetValue(0x823A0914, 0x60000000);
 
-		// fix xray shader bug in scoreboard
+		// remove xray material from the scoreboard
 		Util::Hook::SetValue(0x821637A4, 0x60000000);
 
 		// Completely disable Black Box

@@ -19,6 +19,7 @@
 #include "Game/Structs.h"
 #include "Game/Symbols.h"
 
+#include "Util/Command.h"
 #include "Util/Hook.h"
 #include "Util/String.h"
 
