@@ -38,19 +38,11 @@ namespace Patches
 
 	void RegisterHooks()
 	{
+		// add a nice intro movie for when the player starts the game
 		Com_Init_Try_Block_Function_Hook.Create(0x822DC5A8, Com_Init_Try_Block_Function);
 
 		// Allow unsigned fast files to load on MP
 		DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
-
-		// set version to mine!
-		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
-
-		// fix console input
-		Util::Hook::SetValue(0x823A0914, 0x60000000);
-
-		// remove xray material from the scoreboard
-		Util::Hook::SetValue(0x821637A4, 0x60000000);
 
 		// Completely disable Black Box
 		Util::Hook::SetValue(0x822DC5E4, 0x60000000); // BB_Init
@@ -63,6 +55,15 @@ namespace Patches
 		Util::Hook::SetValue(0x823A44A0, 0x60000000); // LiveAntiCheat_UserSignedInToLive
 		Util::Hook::SetValue(0x8225A9F8, 0x60000000); // LiveAntiCheat_UserSignedOut
 		Util::Hook::SetValue(0x824290D4, 0x60000000); // LiveAntiCheat_OnChallengesReceived
+
+		// set version to mine!
+		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
+
+		// fix console input
+		Util::Hook::SetValue(0x823A0914, 0x60000000);
+
+		// remove xray material from the scoreboard
+		Util::Hook::SetValue(0x821637A4, 0x60000000);
 
 		// Disable debug memory tracking
 		Util::Hook::SetValue(0x823A6270, 0x60000000); // track_init
