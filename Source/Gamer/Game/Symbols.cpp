@@ -4,6 +4,7 @@
 namespace Symbols
 {
 	Cmd_AddCommand_t Cmd_AddCommand = Cmd_AddCommand_t(0x822C96F8);
+	Cbuf_AddText_t Cbuf_AddText = Cbuf_AddText_t(0x822C8C20);
 
 	CL_ConsolePrint_t CL_ConsolePrint = CL_ConsolePrint_t(0x8218F058);
 

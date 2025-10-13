@@ -2,6 +2,20 @@
 
 namespace Patches
 {
+	void PlayIntroMovies()
+	{
+		Symbols::Cbuf_AddText(0, "autocinematic title\n");
+	}
+
+	Util::Hook::Detour Com_Init_Try_Block_Function_Hook;
+	void Com_Init_Try_Block_Function(const char* p_command_line)
+	{
+		auto Invoke = Com_Init_Try_Block_Function_Hook.Invoke<void(*)(const char*)>();
+		Invoke(p_command_line);
+
+		PlayIntroMovies();
+	}
+
 	Util::Hook::Detour DB_InflateInit_Hook;
 	void DB_InflateInit(int fileIsSecure)
 	{
@@ -24,13 +38,10 @@ namespace Patches
 
 	void RegisterHooks()
 	{
-		Com_PrintMessage(0, "Mod loaded!\n NX1 GAMING !!!!!");
+		Com_Init_Try_Block_Function_Hook.Create(0x822DC5A8, Com_Init_Try_Block_Function);
 
 		// Allow unsigned fast files to load on MP
 		DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
-
-		// disable xlive data getting popup, this will make the xbox live menus fully accessible
-		//Util::Hook::SetValue(0x822CC4A8, 0x60000000);
 
 		// set version to mine!
 		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);

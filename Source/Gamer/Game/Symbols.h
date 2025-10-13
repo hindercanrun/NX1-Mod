@@ -5,6 +5,9 @@ namespace Symbols
 	typedef void (*Cmd_AddCommand_t)(const char* cmdName, void (__cdecl* function)(), Structs::cmd_function_s* allocedCmd);
 	extern Cmd_AddCommand_t Cmd_AddCommand;
 
+	typedef void (*Cbuf_AddText_t)(int localClientNum, const char* text);
+	extern Cbuf_AddText_t Cbuf_AddText;
+
 	typedef void (*CL_ConsolePrint_t)(int localClientNum, int channel, const char* txt, int duration, int pixelWidth, int flags);
 	extern CL_ConsolePrint_t CL_ConsolePrint;
 
