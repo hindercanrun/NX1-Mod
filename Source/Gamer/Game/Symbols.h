@@ -14,6 +14,15 @@ namespace Symbols
 	typedef HRESULT (*DB_AuthLoad_InflateInit_t)(Structs::db_z_stream_s* stream, int isSecure, const char* filename);
 	extern DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit;
 
+	typedef const char* (*DB_GetXAssetTypeName_t)(int type);
+	extern DB_GetXAssetTypeName_t DB_GetXAssetTypeName;
+
+	typedef int (*DB_GetXAssetTypeSize_t)(int type);
+	extern DB_GetXAssetTypeSize_t DB_GetXAssetTypeSize;
+
+	typedef const char* (*DB_GetXAssetName_t)(const Structs::XAsset* asset);
+	extern DB_GetXAssetName_t DB_GetXAssetName;
+
 	extern Structs::DBLoadData* g_load;
 	extern const char* g_assetNames;
 }

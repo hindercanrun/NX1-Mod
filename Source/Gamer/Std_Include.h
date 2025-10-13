@@ -11,6 +11,7 @@
 #include <sstream>
 #include <direct.h>
 #include <io.h>
+#include <time.h>
 
 #include <xtl.h>
 #include <xbox.h>

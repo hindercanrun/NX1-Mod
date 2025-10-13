@@ -22,12 +22,47 @@ namespace Patches
 		Symbols::DB_AuthLoad_InflateInit(&Symbols::g_load->stream, fileIsSecure, Symbols::g_load->p_file->name);
 	}
 
-	void Com_PrintMessage(int channel, const char *msg)
+	static FILE* g_consoleLog = NULL;
+
+	void OpenLogFile()
+	{
+		if (g_consoleLog)
+			return;
+
+		g_consoleLog = fopen("game:/nx1gaming/console.log", "w");
+		if (!g_consoleLog)
+			return;
+
+		time_t now = time(NULL);
+		struct tm* t = localtime(&now);
+		if (t)
+		{
+			fprintf(g_consoleLog, "logfile opened on %s\n", asctime(t));
+		}
+
+		fflush(g_consoleLog);
+	}
+
+	void LogPrintMessage(const char* msg)
+	{
+		if (!g_consoleLog)
+			OpenLogFile();
+
+		if (g_consoleLog)
+		{
+			fprintf(g_consoleLog, "%s", msg);
+			fflush(g_consoleLog);
+		}
+	}
+
+	void PrintMessage(const char* msg)
 	{
 		if (msg[0] == '^' && msg[1] != '\0')
 			msg += 2;
 
 		Symbols::CL_ConsolePrint(0, 0, msg, 0, 0, 0);
+
+		LogPrintMessage(msg);
 	}
 
 	Util::Hook::Detour getBuildNumber_Hook;
@@ -55,6 +90,8 @@ namespace Patches
 		Util::Hook::SetValue(0x823A44A0, 0x60000000); // LiveAntiCheat_UserSignedInToLive
 		Util::Hook::SetValue(0x8225A9F8, 0x60000000); // LiveAntiCheat_UserSignedOut
 		Util::Hook::SetValue(0x824290D4, 0x60000000); // LiveAntiCheat_OnChallengesReceived
+
+		Util::Hook::SetValue(0x8253DFA8, PrintMessage);
 
 		// set version to mine!
 		getBuildNumber_Hook.Create(0x822BDA28, getBuildNumber);
