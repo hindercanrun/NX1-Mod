@@ -71,4 +71,11 @@ namespace Structs
 		unsigned int lookaheadOffset;
 		unsigned int lookaheadClearAvailIn;
 	};
+
+	struct XZoneInfo
+	{
+		const char *name;
+		int allocFlags;
+		int freeFlags;
+	};
 }

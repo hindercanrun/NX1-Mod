@@ -14,6 +14,9 @@ namespace Symbols
 	typedef HRESULT (*DB_AuthLoad_InflateInit_t)(Structs::db_z_stream_s* stream, int isSecure, const char* filename);
 	extern DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit;
 
+	typedef void (*DB_LoadXAssets_t)(Structs::XZoneInfo* zoneInfo, unsigned int zoneCount, unsigned int syncMode);
+	extern DB_LoadXAssets_t DB_LoadXAssets;
+
 	typedef DWORD (*Sys_Milliseconds_t)();
 	extern Sys_Milliseconds_t Sys_Milliseconds;
 

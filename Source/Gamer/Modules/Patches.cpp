@@ -51,6 +51,31 @@ namespace Patches
 		return Util::String::Va("1 01/05/2012 11:39:15 NX1GAMING");
 	}
 
+	void Cmd_LoadZone_f()
+	{
+		Structs::XZoneInfo zoneInfo;
+
+		zoneInfo.allocFlags = 1;
+		zoneInfo.name = "ui";
+		zoneInfo.freeFlags = 0;
+
+		Symbols::DB_LoadXAssets(&zoneInfo, 1, 1);
+	}
+
+	void AddCommands()
+	{
+		Util::Command::Add("loadzone", Cmd_LoadZone_f);
+	}
+
+	Util::Hook::Detour Cmd_Init_Hook;
+	void Cmd_Init()
+	{
+		auto Invoke = Cmd_Init_Hook.Invoke<void(*)()>();
+		Invoke();
+
+		AddCommands();
+	}
+
 	void StringEdits()
 	{
 		// example:
@@ -115,6 +140,8 @@ namespace Patches
 
 		// remove xray material from the scoreboard - temp fix for now, need to figure out why it's covering almost the full screen
 		Util::Hook::SetValue(0x821637A4, 0x60000000);
+
+		Cmd_Init_Hook.Create(0x822CA580, Cmd_Init);
 
 		StringEdits();
 		DVarEdits();

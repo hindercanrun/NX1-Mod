@@ -9,6 +9,7 @@ namespace Symbols
 	CL_ConsolePrint_t CL_ConsolePrint = CL_ConsolePrint_t(0x8218F058);
 
 	DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit = DB_AuthLoad_InflateInit_t(0x821CC670);
+	DB_LoadXAssets_t DB_LoadXAssets = DB_LoadXAssets_t(0x82213570);
 
 	Sys_Milliseconds_t Sys_Milliseconds = Sys_Milliseconds_t(0x823A6C20);
 
