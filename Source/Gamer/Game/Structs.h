@@ -11,6 +11,38 @@ namespace Structs
 		void (__cdecl* function)();
 	};
 
+	enum DvarSetSource : __int32
+	{
+		DVAR_SOURCE_INTERNAL = 0x0,
+		DVAR_SOURCE_EXTERNAL = 0x1,
+		DVAR_SOURCE_SCRIPT = 0x2,
+	};
+
+	union DvarValue
+	{
+		bool enabled;
+		int integer;
+		unsigned int unsignedInt;
+		float value;
+		float vector[4];
+		const char *string;
+		unsigned __int8 color[4];
+	};
+
+	const struct dvar_t
+	{
+		const char *name;
+		const char *description;
+		unsigned __int16 flags;
+		unsigned __int8 type;
+		bool modified;
+		DvarValue current;
+		DvarValue latched;
+		DvarValue reset;
+		//todo DvarLimits domain;
+		dvar_t *hashNext;
+	};
+
 	struct SysFile
 	{
 		void* handle;

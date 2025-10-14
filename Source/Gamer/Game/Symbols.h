@@ -5,6 +5,9 @@ namespace Symbols
 	typedef void (*Cmd_AddCommand_t)(const char* cmdName, void (__cdecl* function)(), Structs::cmd_function_s* allocedCmd);
 	extern Cmd_AddCommand_t Cmd_AddCommand;
 
+	typedef Structs::cmd_function_s* (*Cmd_FindCommand_t)(const char* cmdName);
+	extern Cmd_FindCommand_t Cmd_FindCommand;
+
 	typedef void (*Cbuf_AddText_t)(int localClientNum, const char* text);
 	extern Cbuf_AddText_t Cbuf_AddText;
 
@@ -16,6 +19,12 @@ namespace Symbols
 
 	typedef void (*DB_LoadXAssets_t)(Structs::XZoneInfo* zoneInfo, unsigned int zoneCount, unsigned int syncMode);
 	extern DB_LoadXAssets_t DB_LoadXAssets;
+
+	typedef const char* (*Dvar_ValueToString_t)(const Structs::dvar_t* dvar, Structs::DvarValue value);
+	extern Dvar_ValueToString_t Dvar_ValueToString;
+
+	typedef int (*Dvar_IsCheatProtected_t)(unsigned __int16 flags);
+	extern Dvar_IsCheatProtected_t Dvar_IsCheatProtected;
 
 	typedef DWORD (*Sys_Milliseconds_t)();
 	extern Sys_Milliseconds_t Sys_Milliseconds;
