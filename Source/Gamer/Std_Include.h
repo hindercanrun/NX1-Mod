@@ -17,12 +17,15 @@
 #include <xbox.h>
 #include <xgraphics.h>
 
-#include "Game/Structs.h"
-#include "Game/Symbols.h"
+#include "Game\Structs.h"
+#include "Game\Symbols.h"
 
-#include "Util/Command.h"
-#include "Util/Hook.h"
-#include "Util/String.h"
+#include "Util\Command.h"
+#include "Util\Hook.h"
+#include "Util\Print.h"
+#include "Util\String.h"
+
+#include "Loader\ModulesLoader.h"
 
 extern "C"
 {

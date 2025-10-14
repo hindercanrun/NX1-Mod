@@ -1,7 +1,5 @@
 #include "Std_Include.h"
 
-#include "Loader/ModulesLoader.h"
-
 DWORD WINAPI MainThread(LPVOID)
 {
 	while (true)

@@ -22,6 +22,12 @@
     <ClCompile Include="Gamer\Util\Command.cpp">
       <Filter>Gamer\Util</Filter>
     </ClCompile>
+    <ClCompile Include="Gamer\Modules\PrintPatches.cpp">
+      <Filter>Gamer\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Util\Print.cpp">
+      <Filter>Gamer\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer\Util\Hook.h">
@@ -46,6 +52,12 @@
       <Filter>Gamer\Game</Filter>
     </ClInclude>
     <ClInclude Include="Gamer\Util\Command.h">
+      <Filter>Gamer\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\PrintPatches.h">
+      <Filter>Gamer\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Util\Print.h">
       <Filter>Gamer\Util</Filter>
     </ClInclude>
   </ItemGroup>

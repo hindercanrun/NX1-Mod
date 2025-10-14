@@ -1,11 +1,11 @@
-#include "../Std_Include.h"
+#include "..\Std_Include.h"
 #include "String.h"
 
 namespace Util
 {
 	namespace String
 	{
-		const char* va(const char* fmt, ...)
+		const char* Va(const char* fmt, ...)
 		{
 			static char buf[32000];
 

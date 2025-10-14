@@ -1,8 +1,9 @@
-#include "../Std_Include.h"
+#include "..\Std_Include.h"
 #include "ModulesLoader.h"
 
 // Modules
-#include "../Modules/Patches.h"
+#include "..\Modules\Patches.h"
+#include "..\Modules\PrintPatches.h"
 
 namespace ModulesLoader
 {
@@ -48,6 +49,7 @@ namespace ModulesLoader
 	void Load()
 	{
 		RegisterModule("Patches",				Patches::Load,				Patches::Unload);
+		RegisterModule("PrintPatches",			PrintPatches::Load,			PrintPatches::Unload);
 
 		LoadAllModules();
 	}
