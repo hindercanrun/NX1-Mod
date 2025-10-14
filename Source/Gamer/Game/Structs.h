@@ -1,9 +1,16 @@
 #pragma once
 
-#include "../Std_Include.h"
-
 namespace Structs
 {
+	struct cmd_function_s
+	{
+		cmd_function_s* next;
+		const char* name;
+		const char* autoCompleteDir;
+		const char* autoCompleteExt;
+		void (__cdecl* function)();
+	};
+
 	struct SysFile
 	{
 		void* handle;

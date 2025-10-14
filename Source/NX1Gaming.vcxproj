@@ -121,7 +121,10 @@
     <ClCompile Include="Gamer\Loader\ModulesLoader.cpp" />
     <ClCompile Include="Gamer\Main.cpp" />
     <ClCompile Include="Gamer\Modules\Patches.cpp" />
+    <ClCompile Include="Gamer\Modules\PrintPatches.cpp" />
+    <ClCompile Include="Gamer\Util\Command.cpp" />
     <ClCompile Include="Gamer\Util\Hook.cpp" />
+    <ClCompile Include="Gamer\Util\Print.cpp" />
     <ClCompile Include="Gamer\Util\String.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -129,8 +132,11 @@
     <ClInclude Include="Gamer\Game\Symbols.h" />
     <ClInclude Include="Gamer\Loader\ModulesLoader.h" />
     <ClInclude Include="Gamer\Modules\Patches.h" />
+    <ClInclude Include="Gamer\Modules\PrintPatches.h" />
     <ClInclude Include="Gamer\Std_Include.h" />
+    <ClInclude Include="Gamer\Util\Command.h" />
     <ClInclude Include="Gamer\Util\Hook.h" />
+    <ClInclude Include="Gamer\Util\Print.h" />
     <ClInclude Include="Gamer\Util\String.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
