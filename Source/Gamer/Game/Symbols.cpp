@@ -10,6 +10,8 @@ namespace Symbols
 
 	DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit = DB_AuthLoad_InflateInit_t(0x821CC670);
 
+	Sys_Milliseconds_t Sys_Milliseconds = Sys_Milliseconds_t(0x823A6C20);
+
 	Structs::DBLoadData* g_load = (Structs::DBLoadData*)0x8283DA90;
 	const char* g_assetNames = (const char*)0x82578918;
 }
