@@ -1,15 +1,19 @@
 DWORD WINAPI MainThread(LPVOID)
 {
-	while (true)
+	bool loaded = false;
+
+	while (!loaded)
 	{
 		DWORD titleId = XamGetCurrentTitleId();
 		if (titleId == TITLE_ID)
 		{
 			ModulesLoader::Load(); // Load our modules.
+			loaded = true;
 		}
+		Sleep(50);
 	}
 
-	return FALSE;
+	return 0;
 }
 
 BOOL APIENTRY DllMain(
