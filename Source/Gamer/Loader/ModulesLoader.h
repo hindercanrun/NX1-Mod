@@ -1,5 +1,9 @@
 #pragma once
 
+// Modules
+#include "..\Modules\Patches.h"
+#include "..\Modules\PrintPatches.h"
+
 namespace ModulesLoader
 {
 	typedef struct Module

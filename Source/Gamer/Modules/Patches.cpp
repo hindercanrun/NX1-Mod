@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "Patches.h"
-
 namespace Patches
 {
 	// This function gets called once by the game, so it's okay to do our printing in.

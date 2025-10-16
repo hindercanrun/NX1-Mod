@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "Command.h"
-
 namespace Util
 {
 	namespace Command

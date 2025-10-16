@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "String.h"
-
 namespace Util
 {
 	namespace String

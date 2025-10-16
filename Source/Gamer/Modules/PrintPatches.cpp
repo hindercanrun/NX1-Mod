@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "PrintPatches.h"
-
 namespace PrintPatches
 {
 	Util::Hook::Detour Cmd_AddCommand_Hook;

@@ -1,5 +1,3 @@
-#include "Std_Include.h"
-
 DWORD WINAPI MainThread(LPVOID)
 {
 	while (true)

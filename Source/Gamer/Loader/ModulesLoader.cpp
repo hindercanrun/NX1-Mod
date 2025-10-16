@@ -1,10 +1,3 @@
-#include "..\Std_Include.h"
-#include "ModulesLoader.h"
-
-// Modules
-#include "..\Modules\Patches.h"
-#include "..\Modules\PrintPatches.h"
-
 namespace ModulesLoader
 {
 	Module g_modules[MAX_MODULES];

@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "Symbols.h"
-
 namespace Symbols
 {
 	Cmd_AddCommand_t Cmd_AddCommand = Cmd_AddCommand_t(0x822C96F8);

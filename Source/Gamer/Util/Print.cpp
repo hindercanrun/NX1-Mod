@@ -1,6 +1,3 @@
-#include "..\Std_Include.h"
-#include "Print.h"
-
 namespace Util
 {
 	namespace Print
