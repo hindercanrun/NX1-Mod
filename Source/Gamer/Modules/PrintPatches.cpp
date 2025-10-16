@@ -58,15 +58,7 @@ namespace PrintPatches
 	{
 		if (dvar && dvar->name && *dvar->name)
 		{
-			Util::Print::Printf("    dvar set %s %s\n", dvar->name, Symbols::Dvar_ValueToString(dvar, value));
-
-			if (source == Structs::DVAR_SOURCE_EXTERNAL || source == Structs::DVAR_SOURCE_SCRIPT)
-			{
-				if (!Dvar_CanChangeValue(dvar, value, source))
-				{
-					return;
-				}
-			}
+			//Util::Print::Printf("    dvar set %s %s\n", dvar->name, Symbols::Dvar_ValueToString(dvar, value));
 		}
 
 		auto Invoke = Dvar_SetVariant_Hook.Invoke<bool(*)(Structs::dvar_t*, Structs::DvarValue, Structs::DvarSetSource)>();
