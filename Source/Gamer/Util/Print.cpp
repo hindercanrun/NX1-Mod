@@ -9,7 +9,7 @@ namespace Util
 			if (g_consoleLog)
 				return;
 
-			g_consoleLog = fopen("game:/nx1gaming/console.log", "w");
+			g_consoleLog = fopen("game:/" BASE_FOLDER "/logs/console.log", "w");
 			if (!g_consoleLog)
 				return;
 
