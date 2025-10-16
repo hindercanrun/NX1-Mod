@@ -59,13 +59,13 @@ namespace PrintPatches
 		if (dvar && dvar->name && *dvar->name)
 		{
 			Util::Print::Printf("    dvar set %s %s\n", dvar->name, Symbols::Dvar_ValueToString(dvar, value));
-		}
 
-		if (source == Structs::DVAR_SOURCE_EXTERNAL || source == Structs::DVAR_SOURCE_SCRIPT)
-		{
-			if (!Dvar_CanChangeValue(dvar, value, source))
+			if (source == Structs::DVAR_SOURCE_EXTERNAL || source == Structs::DVAR_SOURCE_SCRIPT)
 			{
-				return;
+				if (!Dvar_CanChangeValue(dvar, value, source))
+				{
+					return;
+				}
 			}
 		}
 
@@ -86,7 +86,7 @@ namespace PrintPatches
 		Util::Print::Printf("Huffman Took %d Milliseconds\n", end - start);
 	}
 
-	void RegisterHooks()
+	void Hooks()
 	{
 		Cmd_AddCommand_Hook.Create(0x822C96F8, Cmd_AddCommand);
 		Cmd_ExecFromFastFile_Hook.Create(0x822CA408, Cmd_ExecFromFastFile);
@@ -97,7 +97,7 @@ namespace PrintPatches
 		MSG_InitHuffman_Hook.Create(0x822E7AB0, MSG_InitHuffman);
 	}
 
-	void UnregisterHooks()
+	void ClearHooks()
 	{
 		Cmd_AddCommand_Hook.Clear();
 		Cmd_ExecFromFastFile_Hook.Clear();
@@ -110,11 +110,11 @@ namespace PrintPatches
 
 	void Load()
 	{
-		RegisterHooks();
+		Hooks();
 	}
 
 	void Unload()
 	{
-		UnregisterHooks();
+		ClearHooks();
 	}
 }

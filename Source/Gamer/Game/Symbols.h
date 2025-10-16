@@ -30,5 +30,4 @@ namespace Symbols
 	extern Sys_Milliseconds_t Sys_Milliseconds;
 
 	extern Structs::DBLoadData* g_load;
-	extern const char* g_assetNames;
 }
