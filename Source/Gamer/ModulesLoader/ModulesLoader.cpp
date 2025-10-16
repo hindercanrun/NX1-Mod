@@ -41,6 +41,7 @@ namespace ModulesLoader
 
 	void Load()
 	{
+		RegisterModule("Assets",				Assets::Load,				Assets::Unload);
 		RegisterModule("Patches",				Patches::Load,				Patches::Unload);
 		RegisterModule("PrintPatches",			PrintPatches::Load,			PrintPatches::Unload);
 

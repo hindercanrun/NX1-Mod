@@ -119,9 +119,17 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Gamer\Deps\ZLib\adler32.c" />
+    <ClCompile Include="Gamer\Deps\ZLib\crc32.c" />
+    <ClCompile Include="Gamer\Deps\ZLib\inffast.c" />
+    <ClCompile Include="Gamer\Deps\ZLib\inflate.c" />
+    <ClCompile Include="Gamer\Deps\ZLib\inftrees.c" />
+    <ClCompile Include="Gamer\Deps\ZLib\zutil.c" />
     <ClCompile Include="Gamer\Game\Symbols.cpp" />
     <ClCompile Include="Gamer\Main.cpp" />
     <ClCompile Include="Gamer\ModulesLoader\ModulesLoader.cpp" />
+    <ClCompile Include="Gamer\Modules\Assets\Assets.cpp" />
+    <ClCompile Include="Gamer\Modules\Assets\Types\RawFile.cpp" />
     <ClCompile Include="Gamer\Modules\Patches.cpp" />
     <ClCompile Include="Gamer\Modules\PrintPatches.cpp" />
     <ClCompile Include="Gamer\Util\Command.cpp" />
@@ -130,9 +138,12 @@
     <ClCompile Include="Gamer\Util\String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Gamer\Deps\ZLib\zlib.h" />
     <ClInclude Include="Gamer\Game\Structs.h" />
     <ClInclude Include="Gamer\Game\Symbols.h" />
     <ClInclude Include="Gamer\ModulesLoader\ModulesLoader.h" />
+    <ClInclude Include="Gamer\Modules\Assets\Assets.h" />
+    <ClInclude Include="Gamer\Modules\Assets\Types\RawFile.h" />
     <ClInclude Include="Gamer\Modules\Patches.h" />
     <ClInclude Include="Gamer\Modules\PrintPatches.h" />
     <ClInclude Include="Gamer\Std_Include.h" />

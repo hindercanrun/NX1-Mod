@@ -28,6 +28,30 @@
     <ClCompile Include="Gamer\ModulesLoader\ModulesLoader.cpp">
       <Filter>Gamer\ModulesLoader</Filter>
     </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Assets.cpp">
+      <Filter>Gamer\Modules\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\inflate.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\zutil.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\inftrees.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\inffast.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\adler32.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Deps\ZLib\crc32.c">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\RawFile.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer\Util\Hook.h">
@@ -60,6 +84,15 @@
     <ClInclude Include="Gamer\ModulesLoader\ModulesLoader.h">
       <Filter>Gamer\ModulesLoader</Filter>
     </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Assets.h">
+      <Filter>Gamer\Modules\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Deps\ZLib\zlib.h">
+      <Filter>Gamer\Deps\ZLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\RawFile.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Gamer">
@@ -76,6 +109,18 @@
     </Filter>
     <Filter Include="Gamer\ModulesLoader">
       <UniqueIdentifier>{266a252f-20c4-4000-871b-afc52e4d1c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Modules\Assets">
+      <UniqueIdentifier>{b3d60bf7-22b2-4d2f-8728-0afd47b0219c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Deps">
+      <UniqueIdentifier>{ae41afc0-5ffb-4aa1-ae45-7c2311bb8747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Deps\ZLib">
+      <UniqueIdentifier>{c10ceb03-c9c0-4deb-ad26-0edbd1dd3728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\Modules\Assets\Types">
+      <UniqueIdentifier>{87dc9034-7e0d-4f5f-bae6-52720ee779d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

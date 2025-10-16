@@ -1,6 +1,7 @@
 #pragma once
 
 // Modules
+#include "..\Modules\Assets\Assets.h"
 #include "..\Modules\Patches.h"
 #include "..\Modules\PrintPatches.h"
 

@@ -27,6 +27,8 @@ typedef void   (*free_func)(voidpf opaque, voidpf address);
 #include <xbox.h>
 #include <xgraphics.h>
 
+#include "Deps\ZLib\zlib.h"
+
 #include "Game\Structs.h"
 #include "Game\Symbols.h"
 
