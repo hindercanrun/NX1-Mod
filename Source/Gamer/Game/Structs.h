@@ -11,11 +11,11 @@ namespace Structs
 		void (__cdecl* function)();
 	};
 
-	enum DvarSetSource : __int32
+	enum DvarSetSource
 	{
-		DVAR_SOURCE_INTERNAL = 0x0,
-		DVAR_SOURCE_EXTERNAL = 0x1,
-		DVAR_SOURCE_SCRIPT = 0x2,
+		DVAR_SOURCE_INTERNAL,
+		DVAR_SOURCE_EXTERNAL,
+		DVAR_SOURCE_SCRIPT,
 	};
 
 	union DvarValue
@@ -25,27 +25,53 @@ namespace Structs
 		unsigned int unsignedInt;
 		float value;
 		float vector[4];
-		const char *string;
-		unsigned __int8 color[4];
+		const char* string;
+		unsigned char color[4];
 	};
 
-	const struct dvar_t
+	struct EnumLimit
 	{
-		const char *name;
-		const char *description;
-		unsigned __int16 flags;
-		unsigned __int8 type;
+		int stringCount;
+		const char** strings;
+	};
+
+	struct IntLimit
+	{
+		int min;
+		int max;
+	};
+
+	struct FloatLimit
+	{
+		float min;
+		float max;
+	};
+
+	union DvarLimits
+	{
+		EnumLimit enumeration;
+		IntLimit integer;
+		FloatLimit value;
+		FloatLimit vector;
+	};
+
+	struct dvar_t
+	{
+		const char* name;
+		const char* description;
+		unsigned int flags;
+		char type;
 		bool modified;
 		DvarValue current;
 		DvarValue latched;
 		DvarValue reset;
-		//todo DvarLimits domain;
-		dvar_t *hashNext;
+		DvarLimits domain;
+		dvar_t* hashNext;
 	};
 
 	struct SysFile
 	{
-		void* handle;
+		HANDLE handle;
 		int startOffset;
 	};
 
@@ -60,53 +86,53 @@ namespace Structs
 		int dummy;
 	};
 
-	struct db_z_stream_s
+	typedef struct
 	{
-		unsigned __int8* next_in;
-		unsigned int avail_in;
-		unsigned int total_in;
+		Bytef* next_in; /* next input byte */
+		uInt avail_in;  /* number of bytes available at next_in */
+		uInt total_in;  /* total number of input bytes read so far */
 
-		unsigned __int8* next_out;
-		unsigned int avail_out;
-		unsigned int total_out;
+		unsigned __int8* next_out; /* next output byte will go here */
+		uInt avail_out; /* remaining free space at next_out */
+		uInt total_out; /* total number of bytes output so far */
 
-		char* msg;
+		char* msg; /* last error message, NULL if no error */
 
-		db_internal_state* state;
+		db_internal_state* state; /* not visible by applications */
 
-		unsigned __int8* (__fastcall* zalloc)(unsigned __int8*, unsigned int, unsigned int);
-		void (__fastcall* zfree)(unsigned __int8*, unsigned __int8*);
+		alloc_func zalloc;  /* used to allocate the internal state */
+		free_func  zfree;   /* used to free the internal state */
+		voidpf opaque; /* private data object passed to zalloc and zfree */
 
-		unsigned __int8* opaque;
-		int data_type;
-	};
+		int data_type; /* best guess about the data type: binary or text for deflate, or the decoding state for inflate */
+	} db_z_stream_s;
 
 	struct DBLoadData
 	{
 		DBFile* p_file;
 		int outstandingRead;
 
-		unsigned __int8* p_fileBuffer;
-		unsigned int readSize;
-		unsigned int completedReadSize;
-		unsigned int offset;
+		Bytef* p_fileBuffer;
+		uInt readSize;
+		uInt completedReadSize;
+		uInt offset;
 
-		unsigned __int8* p_startIn;
+		Bytef* p_startIn;
 
 		OVERLAPPED overlapped;
 
-		unsigned int readError;
+		uInt readError;
 
 		db_z_stream_s stream;
 
-		unsigned int lookaheadReadSize;
-		unsigned int lookaheadOffset;
-		unsigned int lookaheadClearAvailIn;
+		uInt lookaheadReadSize;
+		uInt lookaheadOffset;
+		uInt lookaheadClearAvailIn;
 	};
 
 	struct XZoneInfo
 	{
-		const char *name;
+		const char* name;
 		int allocFlags;
 		int freeFlags;
 	};

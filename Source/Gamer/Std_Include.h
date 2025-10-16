@@ -1,5 +1,13 @@
 #pragma once
 
+typedef unsigned int   uInt;  /* 16 bits or more */
+
+typedef void* voidpf;
+typedef unsigned char Bytef;
+
+typedef voidpf (*alloc_func)(voidpf opaque, uInt items, uInt size);
+typedef void   (*free_func)(voidpf opaque, voidpf address);
+
 #define TITLE_ID 0x4156089E // nx1
 
 #include <cstdint>
