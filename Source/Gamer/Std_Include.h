@@ -25,7 +25,7 @@
 #include "Util\Print.h"
 #include "Util\String.h"
 
-#include "Loader\ModulesLoader.h"
+#include "ModulesLoader\ModulesLoader.h"
 
 extern "C"
 {

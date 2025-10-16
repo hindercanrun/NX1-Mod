@@ -120,8 +120,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Gamer\Game\Symbols.cpp" />
-    <ClCompile Include="Gamer\Loader\ModulesLoader.cpp" />
     <ClCompile Include="Gamer\Main.cpp" />
+    <ClCompile Include="Gamer\ModulesLoader\ModulesLoader.cpp" />
     <ClCompile Include="Gamer\Modules\Patches.cpp" />
     <ClCompile Include="Gamer\Modules\PrintPatches.cpp" />
     <ClCompile Include="Gamer\Util\Command.cpp" />
@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClInclude Include="Gamer\Game\Structs.h" />
     <ClInclude Include="Gamer\Game\Symbols.h" />
-    <ClInclude Include="Gamer\Loader\ModulesLoader.h" />
+    <ClInclude Include="Gamer\ModulesLoader\ModulesLoader.h" />
     <ClInclude Include="Gamer\Modules\Patches.h" />
     <ClInclude Include="Gamer\Modules\PrintPatches.h" />
     <ClInclude Include="Gamer\Std_Include.h" />

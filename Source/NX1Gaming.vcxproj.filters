@@ -10,9 +10,6 @@
     <ClCompile Include="Gamer\Main.cpp">
       <Filter>Gamer</Filter>
     </ClCompile>
-    <ClCompile Include="Gamer\Loader\ModulesLoader.cpp">
-      <Filter>Gamer\Loader</Filter>
-    </ClCompile>
     <ClCompile Include="Gamer\Modules\Patches.cpp">
       <Filter>Gamer\Modules</Filter>
     </ClCompile>
@@ -28,6 +25,9 @@
     <ClCompile Include="Gamer\Util\Print.cpp">
       <Filter>Gamer\Util</Filter>
     </ClCompile>
+    <ClCompile Include="Gamer\ModulesLoader\ModulesLoader.cpp">
+      <Filter>Gamer\ModulesLoader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer\Util\Hook.h">
@@ -38,9 +38,6 @@
     </ClInclude>
     <ClInclude Include="Gamer\Std_Include.h">
       <Filter>Gamer</Filter>
-    </ClInclude>
-    <ClInclude Include="Gamer\Loader\ModulesLoader.h">
-      <Filter>Gamer\Loader</Filter>
     </ClInclude>
     <ClInclude Include="Gamer\Modules\Patches.h">
       <Filter>Gamer\Modules</Filter>
@@ -60,6 +57,9 @@
     <ClInclude Include="Gamer\Util\Print.h">
       <Filter>Gamer\Util</Filter>
     </ClInclude>
+    <ClInclude Include="Gamer\ModulesLoader\ModulesLoader.h">
+      <Filter>Gamer\ModulesLoader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Gamer">
@@ -68,14 +68,14 @@
     <Filter Include="Gamer\Util">
       <UniqueIdentifier>{38bedf2d-f3ba-4a2d-a746-9e767caaed23}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gamer\Loader">
-      <UniqueIdentifier>{266a252f-20c4-4000-871b-afc52e4d1c68}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Gamer\Modules">
       <UniqueIdentifier>{f87f4585-d1f3-4ea6-8800-fed8ed46570a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Gamer\Game">
       <UniqueIdentifier>{b8b14505-b6c2-46bf-aaa3-a113827b2b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gamer\ModulesLoader">
+      <UniqueIdentifier>{266a252f-20c4-4000-871b-afc52e4d1c68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
