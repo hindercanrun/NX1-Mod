@@ -46,6 +46,22 @@ namespace Patches
 		return Util::String::Va("1 01/05/2012 11:39:15 NX1GAMING");
 	}
 
+	Util::Hook::Detour XGetVideoMode_Hook;
+	void XGetVideoMode(PXVIDEO_MODE pVideoMode)
+	{
+		auto Invoke = XGetVideoMode_Hook.Invoke<void(*)(PXVIDEO_MODE)>();
+		Invoke(pVideoMode);
+
+		pVideoMode->fIsHiDef = 1;
+		pVideoMode->fIsWideScreen = 1;
+
+		pVideoMode->dwDisplayWidth  = 1920;
+		pVideoMode->dwDisplayHeight = 1080;
+		pVideoMode->RefreshRate     = 144;
+
+		Util::Print::Printf("XGetVideoMode :: Width = %d :: Height = %d\n", pVideoMode->dwDisplayWidth, pVideoMode->dwDisplayHeight);
+	}
+
 	void Cmd_LoadZone_f()
 	{
 		Structs::XZoneInfo zoneInfo;
@@ -73,6 +89,8 @@ namespace Patches
 
 	void Hooks()
 	{
+		XGetVideoMode_Hook.Create(0x825581AC, XGetVideoMode);
+
 		// issue fix: disable Black Box
 		Util::Hook::SetValue(0x822DC5E4, 0x60000000); // BB_Init
 		Util::Hook::SetValue(0x822DD170, 0x60000000); // BB_Update
