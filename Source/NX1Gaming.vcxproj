@@ -68,7 +68,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderFile>Std_Include.hpp</PrecompiledHeaderFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <ForcedIncludeFiles>D:\ns\nx\1\plugins\NX1Gaming\Source\Gamer\Std_Include.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)Gamer\Std_Include.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -100,7 +100,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PreprocessorDefinitions>NDEBUG;_XBOX;</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ForcedIncludeFiles>D:\ns\nx\1\plugins\NX1Gaming\Source\Gamer\Std_Include.h</ForcedIncludeFiles>
+      <ForcedIncludeFiles>$(ProjectDir)Gamer\Std_Include.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
