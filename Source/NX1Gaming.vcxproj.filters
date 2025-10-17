@@ -52,6 +52,24 @@
     <ClCompile Include="Gamer\Modules\Assets\Types\RawFile.cpp">
       <Filter>Gamer\Modules\Assets\Types</Filter>
     </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\StringTable.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Util\FileSystem.cpp">
+      <Filter>Gamer\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\GfxLightDef.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\LocalizeEntry.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\Fog.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Gamer\Modules\Assets\Types\ShellShock.cpp">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Gamer\Util\Hook.h">
@@ -91,6 +109,24 @@
       <Filter>Gamer\Deps\ZLib</Filter>
     </ClInclude>
     <ClInclude Include="Gamer\Modules\Assets\Types\RawFile.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\StringTable.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Util\FileSystem.h">
+      <Filter>Gamer\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\GfxLightDef.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\LocalizeEntry.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\Fog.h">
+      <Filter>Gamer\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamer\Modules\Assets\Types\ShellShock.h">
       <Filter>Gamer\Modules\Assets\Types</Filter>
     </ClInclude>
   </ItemGroup>

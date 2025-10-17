@@ -8,6 +8,7 @@ namespace Symbols
 
 	DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit = DB_AuthLoad_InflateInit_t(0x821CC670);
 	DB_LoadXAssets_t DB_LoadXAssets = DB_LoadXAssets_t(0x82213570);
+	DB_GetAllXAssetOfType_FastFile_t DB_GetAllXAssetOfType_FastFile = DB_GetAllXAssetOfType_FastFile_t(0x8220E570);
 
 	Dvar_ValueToString_t Dvar_ValueToString = Dvar_ValueToString_t(0x82372F70);
 	Dvar_IsCheatProtected_t Dvar_IsCheatProtected = Dvar_IsCheatProtected_t(0x82372920);

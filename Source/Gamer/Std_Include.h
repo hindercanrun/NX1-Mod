@@ -19,13 +19,15 @@ typedef void   (*free_func)(voidpf opaque, voidpf address);
 #include <functional>
 #include <fstream>
 #include <sstream>
-#include <direct.h>
-#include <io.h>
-#include <time.h>
+#include <algorithm>
+#include <iomanip>
 
 #include <xtl.h>
 #include <xbox.h>
 #include <xgraphics.h>
+#include <direct.h>
+#include <io.h>
+#include <time.h>
 
 #include "Deps\ZLib\zlib.h"
 
@@ -33,6 +35,7 @@ typedef void   (*free_func)(voidpf opaque, voidpf address);
 #include "Game\Symbols.h"
 
 #include "Util\Command.h"
+#include "Util\FileSystem.h"
 #include "Util\Hook.h"
 #include "Util\Print.h"
 #include "Util\String.h"

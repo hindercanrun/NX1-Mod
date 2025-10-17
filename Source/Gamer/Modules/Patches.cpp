@@ -1,5 +1,11 @@
 namespace Patches
 {
+	Util::Hook::Detour R_ShowDirtyDiscError_Hook;
+	void LilPoopStub()
+	{
+		Util::Print::Printf("Stubbed R_ShowDirtyDiscError to do nothing\n");
+	}
+
 	Util::Hook::Detour FS_InitFilesystem_Hook;
 	void FS_InitFilesystem()
 	{
@@ -89,6 +95,8 @@ namespace Patches
 
 	void Hooks()
 	{
+		R_ShowDirtyDiscError_Hook.Create(0x824F6F88, LilPoopStub);
+
 		XGetVideoMode_Hook.Create(0x825581AC, XGetVideoMode);
 
 		// issue fix: disable Black Box

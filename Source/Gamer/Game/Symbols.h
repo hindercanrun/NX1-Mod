@@ -20,6 +20,9 @@ namespace Symbols
 	typedef void (*DB_LoadXAssets_t)(Structs::XZoneInfo* zoneInfo, unsigned int zoneCount, unsigned int syncMode);
 	extern DB_LoadXAssets_t DB_LoadXAssets;
 
+	typedef int (*DB_GetAllXAssetOfType_FastFile_t)(Structs::XAssetType type, Structs::XAssetHeader *assets, int maxCount);
+	extern DB_GetAllXAssetOfType_FastFile_t DB_GetAllXAssetOfType_FastFile;
+
 	typedef const char* (*Dvar_ValueToString_t)(const Structs::dvar_t* dvar, Structs::DvarValue value);
 	extern Dvar_ValueToString_t Dvar_ValueToString;
 
