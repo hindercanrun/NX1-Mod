@@ -12,4 +12,5 @@ namespace Assets
 
 	RawFile* LoadRawFiles(const char* name);
 	void DumpRawFiles(const RawFile* rawFile, char* buffer, int size);
+	void FreeRawFiles(RawFile* raw);
 }

@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <map>
-#include <string>
-#include <algorithm>
-#include <vector>
-
 namespace Assets
 {
 	Util::Hook::Detour DB_GetRawBuffer_Hook;
@@ -12,20 +5,20 @@ namespace Assets
 	{
 		auto Invoke = DB_GetRawBuffer_Hook.Invoke<void(*)(const RawFile*, char*, int)>();
 
+		// TODO: put this behind a dvar
+		// override the file if it exists
 		RawFile* loaded = LoadRawFiles(rawFile->name);
 		if (loaded)
 		{
-			// Make sure not to overflow the buffer
-			int copySize = size < loaded->len ? size : loaded->len;
+			int copySize = (size < loaded->len) ? size : loaded->len;
 			memcpy(buffer, loaded->buffer, copySize);
 
-			// Free the temporary loaded rawfile
-			//RawFileLoader::FreeRawFile(loaded);
-
-			return; // Loaded successfully, skip original engine call
+			FreeRawFiles(loaded);
+			return;
 		}
 
-		//RawFile::DumpRawFiles(rawFile, buffer, size);
+		// TODO: put this behind a dvar
+		//DumpRawFiles(rawFile, buffer, size);
 
 		Invoke(rawFile, buffer, size);
 	}

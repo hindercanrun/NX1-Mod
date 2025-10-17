@@ -2,8 +2,9 @@ namespace Assets
 {
     RawFile* LoadRawFiles(const char* name)
     {
-        char path[256];
-        sprintf(path, "game:/nx1-data/raw/%s", name);
+		char path[256];
+		_snprintf(path, sizeof(path), "game:/nx1-data/raw/%s", name);
+		path[sizeof(path) - 1] = '\0';
 
         FILE* f = fopen(path, "rb");
         if (!f)
@@ -54,55 +55,74 @@ namespace Assets
 
 	void DumpRawFiles(const RawFile* rawFile, char* buffer, int size)
 	{
-		if (rawFile && rawFile->buffer && rawFile->len > 0)
+		// TODO: we should probably clean the file name so we don't get any garbage... buuuut that's not really needed, not right now atleast
+
+		char path[256];
+		_snprintf(path, sizeof(path), "game:/nx1-data/dump/%s", rawFile->name);
+		path[sizeof(path) - 1] = '\0';
+
+		FILE* f = fopen(path, "wb");
+		if (!f)
 		{
-			char dumpPath[256];
-			sprintf(dumpPath, "game:/nx1-data/dump/%s", rawFile->name);
-
-			FILE* f = fopen(dumpPath, "wb");
-			if (f)
-			{
-				int size = rawFile->len + 1;
-				char* buf = (char*)malloc(size);
-				if (!buf)
-				{
-					fclose(f);
-				}
-
-				memset(buf, 0, size);
-
-				if (rawFile->compressedLen > 0)
-				{
-					z_stream strm;
-					memset(&strm, 0, sizeof(z_stream));
-
-					strm.next_in = (Bytef*)rawFile->buffer;
-					strm.avail_in = rawFile->compressedLen;
-					strm.next_out = (Bytef*)buf;
-					strm.avail_out = size - 1;
-
-					if (inflateInit(&strm) == Z_OK)
-					{
-						int ret = inflate(&strm, Z_FINISH);
-						inflateEnd(&strm);
-
-						if (ret != Z_STREAM_END)
-							printf("Warning: Failed to fully decompress %s (err %d)\n", rawFile->name, ret);
-					}
-					else
-					{
-						printf("Error: inflateInit failed for %s\n", rawFile->name);
-					}
-				}
-				else
-				{
-					memcpy(buf, rawFile->buffer, rawFile->len);
-				}
-
-				fwrite(buf, 1, rawFile->len, f);
-				fclose(f);
-				free(buf);
-			}
+			Util::Print::Printf("dumping error: unable to write to path '%s'\n", path);
+			return;
 		}
+
+		int outSize = rawFile->len * 2 + 1024;
+		char* buf = (char*)malloc(outSize);
+		if (!buf)
+		{
+			fclose(f);
+			Util::Print::Printf("dumping error: ran out of memory to dump '%s'\n", rawFile->name);
+			return;
+		}
+
+		memset(buf, 0, outSize);
+		size_t bytesToWrite = 0;
+
+		// decompress the file if it's compressed
+		if (rawFile->compressedLen > 0)
+		{
+			z_stream strm;
+			memset(&strm, 0, sizeof(z_stream));
+
+			strm.next_in = (Bytef*)rawFile->buffer;
+			strm.avail_in = rawFile->compressedLen;
+			strm.next_out = (Bytef*)buf;
+			strm.avail_out = outSize;
+
+			if (inflateInit(&strm) == Z_OK)
+			{
+				int ret = inflate(&strm, Z_FINISH);
+				bytesToWrite = strm.total_out;
+				inflateEnd(&strm);
+			}
+			else
+			{
+				Util::Print::Printf("dumping error: inflateInit failed with '%s'\n", rawFile->name);
+			}
+
+			Util::Print::Printf("decompressed rawfile '%s'\n", rawFile->name);
+		}
+		else
+		{
+			memcpy(buf, rawFile->buffer, rawFile->len);
+			bytesToWrite = rawFile->len;
+		}
+
+		fwrite(buf, 1, bytesToWrite, f);
+		Util::Print::Printf("dumped rawfile '%s'\n", rawFile->name);
+
+		fclose(f);
+		free(buf);
+	}
+
+	void FreeRawFiles(RawFile* raw)
+	{
+		if (!raw)
+			return;
+		free((void*)raw->buffer);
+		free((void*)raw->name);
+		free(raw);
 	}
 }
