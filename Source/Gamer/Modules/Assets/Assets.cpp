@@ -8,11 +8,11 @@
 namespace Assets
 {
 	Util::Hook::Detour DB_GetRawBuffer_Hook;
-	void DB_GetRawBuffer(const RawFile::RawFile* rawFile, char* buffer, int size)
+	void DB_GetRawBuffer(const RawFile* rawFile, char* buffer, int size)
 	{
-		auto Invoke = DB_GetRawBuffer_Hook.Invoke<void(*)(const RawFile::RawFile*, char*, int)>();
+		auto Invoke = DB_GetRawBuffer_Hook.Invoke<void(*)(const RawFile*, char*, int)>();
 
-		RawFile::RawFile* loaded = RawFile::LoadRawFiles(rawFile->name);
+		RawFile* loaded = LoadRawFiles(rawFile->name);
 		if (loaded)
 		{
 			// Make sure not to overflow the buffer

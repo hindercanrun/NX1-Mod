@@ -1,6 +1,6 @@
 #pragma once
 
-namespace RawFile
+namespace Assets
 {
 	struct RawFile
 	{

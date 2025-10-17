@@ -1,4 +1,4 @@
-namespace RawFile
+namespace Assets
 {
     RawFile* LoadRawFiles(const char* name)
     {
