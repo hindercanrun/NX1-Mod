@@ -102,7 +102,7 @@ namespace Assets
 				Util::Print::Printf("dumping error: inflateInit failed with '%s'\n", rawFile->name);
 			}
 
-			Util::Print::Printf("decompressed rawfile '%s'\n", rawFile->name);
+			//Util::Print::Printf("decompressed rawfile '%s'\n", rawFile->name);
 		}
 		else
 		{
