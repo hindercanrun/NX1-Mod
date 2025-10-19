@@ -1,5 +1,8 @@
-# Build results
-Source/Output/
+# vs cache files
+.vs/
+
+# build results
+Build/Output/
 
 *.user
 *.sdf

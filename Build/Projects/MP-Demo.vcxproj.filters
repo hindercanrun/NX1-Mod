@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Main.cpp" />
+    <ClCompile Include="..\..\Source\Game\Symbols.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Util\Command.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Util\FileSystem.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Util\Hook.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Util\Print.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Util\String.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\adler32.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\crc32.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\inffast.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\inflate.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\inftrees.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Dependencies\zlib\zutil.c">
+      <Filter>Dependencies\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Patches.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\PrintPatches.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Assets.cpp">
+      <Filter>Components\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\GfxLightDef.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\LocalizeEntry.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\MapEnts.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\PhysPreset.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\RawFile.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\ShellShock.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\StringTable.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\TracerDef.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\FogDef.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Assets\Types\FxEffectDef.cpp">
+      <Filter>Components\Assets\Types</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Std_Include.h" />
+    <ClInclude Include="..\..\Source\Game\Symbols.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Game\Structs.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Util\Command.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Util\FileSystem.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Util\Hook.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Util\Print.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Util\String.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Dependencies\zlib\zlib.h">
+      <Filter>Dependencies\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Patches.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\PrintPatches.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Assets.h">
+      <Filter>Components\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\FxEffectDef.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\GfxLightDef.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\LaserDef.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\LocalizeEntry.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\MapEnts.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\Material.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\PhysPreset.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\RawFile.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\ShellShock.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\StringTable.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Assets\Types\TracerDef.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\components\assets\types\FogDef.h">
+      <Filter>Components\Assets\Types</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{b8b14505-b6c2-46bf-aaa3-a113827b2b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{38bedf2d-f3ba-4a2d-a746-9e767caaed23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{1233f6ed-0c76-4338-8379-53d7195917ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{ae41afc0-5ffb-4aa1-ae45-7c2311bb8747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\zlib">
+      <UniqueIdentifier>{2e77c70d-ac86-4a13-a9b1-1d421e023baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Assets">
+      <UniqueIdentifier>{b3d60bf7-22b2-4d2f-8728-0afd47b0219c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Assets\Types">
+      <UniqueIdentifier>{87dc9034-7e0d-4f5f-bae6-52720ee779d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
