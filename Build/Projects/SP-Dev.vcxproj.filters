@@ -77,6 +77,7 @@
     <ClCompile Include="..\..\Source\Components\Assets\Types\TracerDef.cpp">
       <Filter>Components\Assets\Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Loader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Std_Include.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\..\Source\Components\Assets\Types\TracerDef.h">
       <Filter>Components\Assets\Types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Loader.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

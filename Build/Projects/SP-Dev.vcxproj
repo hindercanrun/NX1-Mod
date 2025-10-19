@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\Source\Components\Patches.cpp" />
     <ClCompile Include="..\..\Source\Components\PrintPatches.cpp" />
     <ClCompile Include="..\..\Source\Game\Symbols.cpp" />
+    <ClCompile Include="..\..\Source\Loader.cpp" />
     <ClCompile Include="..\..\Source\Main.cpp" />
     <ClCompile Include="..\..\Source\Util\Command.cpp" />
     <ClCompile Include="..\..\Source\Util\FileSystem.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="..\..\Source\Components\PrintPatches.h" />
     <ClInclude Include="..\..\Source\Game\Structs.h" />
     <ClInclude Include="..\..\Source\Game\Symbols.h" />
+    <ClInclude Include="..\..\Source\Loader.h" />
     <ClInclude Include="..\..\Source\Std_Include.h" />
     <ClInclude Include="..\..\Source\Util\Command.h" />
     <ClInclude Include="..\..\Source\Util\FileSystem.h" />
