@@ -2,6 +2,9 @@
 
 namespace PrintPatches
 {
-	void Load();
-	void Unload();
+	namespace MP_Demo
+	{
+		void Load();
+		void Unload();
+	}
 }

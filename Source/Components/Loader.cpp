@@ -45,9 +45,9 @@ namespace Loader
 		RegisterModule("Assets",				Assets::SP_Dev::Load,				Assets::SP_Dev::Unload);
 		RegisterModule("Patches",				Patches::SP_Dev::Load,				Patches::SP_Dev::Unload);
 #elif MP_DEMO
-		RegisterModule("Assets",				Assets::Load_MP_DEV,				Assets::Unload_MP_DEV);
-		RegisterModule("Patches",				Patches::Load_MP_DEV,				Patches::Unload_MP_DEV);
-		RegisterModule("PrintPatches",			PrintPatches::Load_MP_DEV,			PrintPatches::Unload_MP_DEV);
+		RegisterModule("Assets",				Assets::MP_Demo::Load,				Assets::MP_Demo::Unload);
+		RegisterModule("Patches",				Patches::MP_Demo::Load,				Patches::MP_Demo::Unload);
+		RegisterModule("PrintPatches",			PrintPatches::MP_Demo::Load,		PrintPatches::MP_Demo::Unload);
 #endif
 
 		LoadAllModules();
