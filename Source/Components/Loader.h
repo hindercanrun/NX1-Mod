@@ -1,9 +1,9 @@
 #pragma once
 
 // Modules
-#include "Components\Assets\Assets.h"
-#include "Components\Patches.h"
-#include "Components\PrintPatches.h"
+#include "Components\Modules\Assets\Assets.h"
+#include "Components\Modules\Patches.h"
+#include "Components\Modules\PrintPatches.h"
 
 namespace Loader
 {

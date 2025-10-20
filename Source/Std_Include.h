@@ -38,7 +38,7 @@ typedef void   (*free_func)(voidpf opaque, voidpf address);
 #include "Util\Print.h"
 #include "Util\String.h"
 
-#include "Loader.h"
+#include "Components\Loader.h"
 
 extern "C"
 {

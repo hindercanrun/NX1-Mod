@@ -43,7 +43,9 @@ namespace Loader
 	{
 		//RegisterModule("Assets",				Assets::Load,				Assets::Unload);
 		RegisterModule("Patches",				Patches::Load,				Patches::Unload);
-		//RegisterModule("PrintPatches",			PrintPatches::Load,			PrintPatches::Unload);
+#ifdef MP_Demo
+		RegisterModule("PrintPatches",			PrintPatches::Load,			PrintPatches::Unload);
+#endif
 
 		LoadAllModules();
 	}
