@@ -7,6 +7,18 @@ namespace Drawing
 #ifdef SP_DEV
 		Structs::Font_s** Font;
 
+		Util::Hook::Detour DevGui_GetScreenXPad_Hook;
+		int DevGui_GetScreenXPad()
+		{
+			return 0;
+		}
+
+		Util::Hook::Detour DevGui_GetScreenYPad_Hook;
+		int DevGui_GetScreenYPad()
+		{
+			return 0;
+		}
+
 		void DrawWatermark()
 		{
 			if (!*Font)
@@ -62,6 +74,10 @@ namespace Drawing
 		void Hooks()
 		{
 			Font = (Structs::Font_s**)0x8423B21C; // fonts/smallfont
+
+			// Match the Dev Gui safe area on PC!
+			DevGui_GetScreenXPad_Hook.Create(0x8229D748, DevGui_GetScreenXPad);
+			DevGui_GetScreenYPad_Hook.Create(0x8229D7B0, DevGui_GetScreenYPad);
 
 			CL_DrawScreen_Hook.Create(0x8221F858, CL_DrawScreen);
 
