@@ -11,7 +11,7 @@ namespace Assets
 
 	struct ShellShockParams
 	{
-		const char *p_name;
+		const char* p_name;
 		int screenBlendBlurredFadeTime;
 		int screenBlendBlurredEffectTime;
 		int screenBlendFlashWhiteFadeTime;
@@ -26,20 +26,20 @@ namespace Assets
 		float lookControlMaxPitchSpeed;
 		float lookControlMaxYawSpeed;
 		bool movementAffect;
-		const char *volumeSettingName;
+		const char* volumeSettingName;
 		bool soundAffect;
-		const char *soundLoop;
-		const char *soundEnd;
-		const char *soundEndAbort;
+		const char* soundLoop;
+		const char* soundEnd;
+		const char* soundEndAbort;
 		int soundFadeInTime;
 		int soundFadeOutTime;
 		float soundDrylevel;
 		float soundWetlevel;
-		char *soundRoomtype;
+		char* soundRoomtype;
 		int soundModEndDelay;
 		int soundLoopFadeTime;
 		int soundLoopEndDelay;
 	};
 
-	void Dump_ShellShock(const ShellShockParams* shock);
+	void Dump_ShellshockParams(const ShellShockParams* shock);
 }

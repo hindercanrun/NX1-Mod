@@ -195,6 +195,19 @@ namespace Patches
 			getBuildNumber_Hook.Clear();
 			LSP_CheckOngoingTasks_Hook.Clear();
 		}
+
+		void Load()
+		{
+			Hooks();
+			AssertRemovals();
+			StringEdits();
+			DVarEdits();
+		}
+
+		void Unload()
+		{
+			ClearHooks();
+		}
 #endif
 	}
 
@@ -357,29 +370,18 @@ namespace Patches
 			getBuildNumber_Hook.Clear();
 			Cmd_Init_Hook.Clear();
 		}
-#endif
-	}
 
-	void Load()
-	{
-#ifdef SP_DEV
-		SP_Dev::Hooks();
-		SP_Dev::AssertRemovals();
-		SP_Dev::StringEdits();
-		SP_Dev::DVarEdits();
-#elif MP_DEMO
-		MP_Demo::Hooks();
-		MP_Demo::StringEdits();
-		MP_Demo::DVarEdits();
-#endif
-	}
+		void Load()
+		{
+			Hooks();
+			StringEdits();
+			DVarEdits();
+		}
 
-	void Unload()
-	{
-#ifdef SP_DEV
-		SP_Dev::ClearHooks();
-#elif MP_DEMO
-		MP_Demo::ClearHooks();
+		void Unload()
+		{
+			ClearHooks();
+		}
 #endif
 	}
 }

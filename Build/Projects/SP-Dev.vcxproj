@@ -139,7 +139,7 @@
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\MapEnts.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\PhysPreset.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\RawFile.cpp" />
-    <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\ShellShock.cpp" />
+    <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\ShellshockParams.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\StringTable.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\TracerDef.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Patches.cpp" />
@@ -164,7 +164,7 @@
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\Material.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\PhysPreset.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\RawFile.h" />
-    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\ShellShock.h" />
+    <ClInclude Include="..\..\source\components\modules\assets\types\ShellshockParams.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\StringTable.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\TracerDef.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Patches.h" />

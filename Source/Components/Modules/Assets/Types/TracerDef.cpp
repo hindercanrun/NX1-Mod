@@ -1,6 +1,3 @@
-#include "TracerDef.h"
-#include "Material.h"
-
 namespace Assets
 {
 	void Dump_TracerDef(const TracerDef* tracerDef)

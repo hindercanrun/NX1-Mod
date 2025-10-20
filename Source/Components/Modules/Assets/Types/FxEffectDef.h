@@ -90,7 +90,7 @@ namespace Assets
 	union FxElemVisuals
 	{
 		const void* anonymous;
-		// Material* material;
+		Material* material;
 		// XModel* model;
 		FxEffectDefRef effectDef;
 		const char* soundName;

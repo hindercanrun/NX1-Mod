@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Material.h"
-
 namespace Assets
 {
 	struct TracerDef

@@ -1,5 +1,3 @@
-#include "MapEnts.h"
-
 namespace Assets
 {
 	void Dump_MapEnts(const MapEnts* mapEnts)
@@ -12,9 +10,10 @@ namespace Assets
 
 		std::string outPath = "game:\\" BASE_FOLDER "\\dump\\" + assetName + ".ents";
 
-		int lengthToWrite = mapEnts->numEntityChars;
-		if (mapEnts->entityString[lengthToWrite - 1] == '\0')
-			--lengthToWrite;
-		Util::FileSystem::WriteFileToDisk(outPath.c_str(), mapEnts->entityString, lengthToWrite);
+		int len = mapEnts->numEntityChars;
+		// skip null term
+		if (mapEnts->entityString[len - 1] == '\0')
+			--len;
+		Util::FileSystem::WriteFileToDisk(outPath.c_str(), mapEnts->entityString, len);
 	}
 }

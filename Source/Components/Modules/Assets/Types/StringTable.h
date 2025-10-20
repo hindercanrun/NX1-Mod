@@ -16,5 +16,5 @@ namespace Assets
 		StringTableCell* values;
 	};
 
-	void DumpStringTables(const char* filename, StringTable** tablePtr, const char* a3);
+	void Dump_StringTable(const StringTable* stringTable);
 }

@@ -1,5 +1,3 @@
-#include "PhysPreset.h"
-
 namespace Assets
 {
 	void Dump_PhysPreset(const PhysPreset* physPreset)

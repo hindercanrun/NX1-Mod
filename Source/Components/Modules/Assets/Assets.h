@@ -44,13 +44,30 @@
 #include "Types\LaserDef.h" // new, needs research
 // ASSET_TYPE_VEHICLE
 // ASSET_TYPE_ADDON_MAP_ENTS - possibly (?) never used
-#include "Types\ShellShock.h"
+#include "Types\ShellshockParams.h"
 // ASSET_TYPE_VOLUMESETTING - new, needs research
 // ASSET_TYPE_REVERBPRESET - new, needs research
 #include "Types\FogDef.h"
 
 namespace Assets
 {
-	void Load();
-	void Unload();
+	namespace SP_Dev
+	{
+		void Load();
+		void Unload();
+	}
+
+	namespace MP_Dev
+	{
+	}
+
+	namespace SP_Demo
+	{
+	}
+
+	namespace MP_Demo
+	{
+		void Load();
+		void Unload();
+	}
 }

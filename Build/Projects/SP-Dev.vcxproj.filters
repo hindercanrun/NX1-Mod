@@ -68,13 +68,13 @@
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\RawFile.cpp">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\ShellShock.cpp">
-      <Filter>Components\Modules\Assets\Types</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\StringTable.cpp">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\TracerDef.cpp">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\ShellshockParams.cpp">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,13 +140,13 @@
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\RawFile.h">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\ShellShock.h">
-      <Filter>Components\Modules\Assets\Types</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\StringTable.h">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\TracerDef.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\components\modules\assets\types\ShellshockParams.h">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClInclude>
   </ItemGroup>

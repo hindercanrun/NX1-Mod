@@ -1,71 +1,28 @@
-#include "StringTable.h"
-
 namespace Assets
 {
-	void DumpStringTables(const char* filename, StringTable** tablePtr, const char* a3)
+	void Dump_StringTable(const StringTable* stringTable)
 	{
-		// Validate result
-		if (!tablePtr || !*tablePtr)
+		if (!stringTable)
 			return;
 
-		StringTable* table = *tablePtr;
-		if (!table || !table->values)
-			return;
+		std::string assetName = stringTable->name;
+		std::replace(assetName.begin(), assetName.end(), '/', '\\');
 
-		// Prepare dump path
-		char path[256];
-		_snprintf(path, sizeof(path), "game:/nx1-data/dump/%s", filename);
-		path[sizeof(path) - 1] = '\0';
+		std::string outPath = "game:\\" BASE_FOLDER "\\dump\\" + assetName;
 
-		FILE* f = fopen(path, "wb");
-		if (!f)
+		std::string csvTable;
+		for (int i = 0; i < stringTable->rowCount; i++)
 		{
-			Util::Print::Printf("Failed to open dump path: %s\n", path);
-			return;
-		}
-
-		// Dump contents
-		int totalCells = table->columnCount * table->rowCount;
-		for (int row = 0; row < table->rowCount; ++row)
-		{
-			for (int col = 0; col < table->columnCount; ++col)
+			for (int j = 0; j < stringTable->columnCount; j++)
 			{
-				int index = row * table->columnCount + col;
-				const char* str = nullptr;
-
-				if (index >= 0 && index < totalCells)
-					str = table->values[index].string;
-
-				if (str)
-				{
-					// Escape commas/quotes for CSV
-					bool hasComma = strchr(str, ',') != nullptr;
-					bool hasQuote = strchr(str, '"') != nullptr;
-					if (hasComma || hasQuote)
-					{
-						fputc('"', f);
-						for (const char* p = str; *p; ++p)
-						{
-							if (*p == '"') fputc('"', f); // double quotes inside CSV
-							fputc(*p, f);
-						}
-						fputc('"', f);
-					}
-					else
-					{
-						fputs(str, f);
-					}
-				}
-
-				if (col < table->columnCount - 1)
-					fputc(',', f);
+				csvTable += stringTable->values[i * stringTable->columnCount + j].string;
+				if (j < stringTable->columnCount - 1)
+					csvTable += ",";
 			}
 
-			fputc('\n', f);
+			csvTable += "\n";
 		}
 
-		Util::Print::Printf("dumped stringtable '%s'\n", filename);
-
-		fclose(f);
+		Util::FileSystem::WriteFileToDisk(outPath.c_str(), csvTable.c_str(), csvTable.size());
 	}
 }

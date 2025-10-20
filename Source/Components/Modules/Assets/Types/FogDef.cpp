@@ -1,5 +1,3 @@
-#include "FogDef.h"
-
 namespace Assets
 {
 	void Dump_FogDef(const FogDef* fogDef)
@@ -31,7 +29,6 @@ namespace Assets
 		oss << "sunFogScale [" << fogDef->m_sun_fog_scale << "]\n";
 
 		std::string fsiData = oss.str();
-
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), fsiData.c_str(), (int)fsiData.size());
 	}
 }
