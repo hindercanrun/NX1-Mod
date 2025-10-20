@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_FogDef(const FogDef* fogDef)
 	{
+#ifdef DUMP_ASSETS
 		if (!fogDef)
 			return;
 
@@ -30,5 +31,6 @@ namespace Assets
 
 		std::string fsiData = oss.str();
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), fsiData.c_str(), (int)fsiData.size());
+#endif
 	}
 }

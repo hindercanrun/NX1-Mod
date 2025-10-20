@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_ShellshockParams(const ShellShockParams* shellShockParams)
 	{
+#ifdef DUMP_ASSETS
 		if (!shellShockParams)
 			return;
 
@@ -43,5 +44,6 @@ namespace Assets
 
 		std::string data = oss.str();
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), data.c_str(), (int)data.size());
+#endif
 	}
 }

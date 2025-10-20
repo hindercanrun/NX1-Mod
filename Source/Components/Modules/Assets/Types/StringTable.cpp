@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_StringTable(const StringTable* stringTable)
 	{
+#ifdef DUMP_ASSETS
 		if (!stringTable)
 			return;
 
@@ -24,5 +25,6 @@ namespace Assets
 		}
 
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), csvTable.c_str(), csvTable.size());
+#endif
 	}
 }

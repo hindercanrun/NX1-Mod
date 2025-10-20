@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_PhysPreset(const PhysPreset* physPreset)
 	{
+#ifdef DUMP_ASSETS
 		if (!physPreset)
 			return;
 
@@ -36,5 +37,6 @@ namespace Assets
 
 		std::string data = oss.str();
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), data.c_str(), data.size());
+#endif
 	}
 }

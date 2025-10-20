@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_MapEnts(const MapEnts* mapEnts)
 	{
+#ifdef DUMP_ASSETS
 		if (!mapEnts)
 			return;
 
@@ -15,5 +16,6 @@ namespace Assets
 		if (mapEnts->entityString[len - 1] == '\0')
 			--len;
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), mapEnts->entityString, len);
+#endif
 	}
 }

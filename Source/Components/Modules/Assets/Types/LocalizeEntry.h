@@ -8,5 +8,5 @@ namespace Assets
 		const char* name;
 	};
 
-	void Dump_LocalizeEntry(const LocalizeEntry* localizeEntry);
+	//void Dump_LocalizeEntry(const LocalizeEntry* localizeEntry);
 }

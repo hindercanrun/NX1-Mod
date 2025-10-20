@@ -1,5 +1,3 @@
-#include "RawFile.h"
-
 namespace Assets
 {
     RawFile* LoadRawFiles(const char* name)

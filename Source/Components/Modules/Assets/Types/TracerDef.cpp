@@ -2,6 +2,7 @@ namespace Assets
 {
 	void Dump_TracerDef(const TracerDef* tracerDef)
 	{
+#ifdef DUMP_ASSETS
 		if (!tracerDef)
 			return;
 
@@ -40,5 +41,6 @@ namespace Assets
 
 		std::string data = oss.str();
 		Util::FileSystem::WriteFileToDisk(outPath.c_str(), data.c_str(), data.size());
+#endif
 	}
 }
