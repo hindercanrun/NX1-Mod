@@ -185,6 +185,9 @@ namespace Patches
 
 			// kill view pos
 			Util::Hook::SetValue(0x821BB110, 0xFC400090);
+
+			// kill loc errors
+			Util::Hook::SetValue(0x82496DFC, 0xFC400090); // loc_warningsAsErrors
 		}
 
 		void ClearHooks()

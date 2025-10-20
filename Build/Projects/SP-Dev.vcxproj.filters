@@ -158,6 +158,21 @@
     <ClInclude Include="..\..\Source\Components\Modules\Drawing.h">
       <Filter>Components\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\VehicleDef.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\SndAliasList.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\SndLpfCurve.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\SndVfCurve.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\WeaponCompleteDef.h">
+      <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">

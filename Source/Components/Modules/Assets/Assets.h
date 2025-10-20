@@ -9,9 +9,9 @@
 // ASSET_TYPE_PIXELSHADER
 // ASSET_TYPE_TECHNIQUE_SET
 // ASSET_TYPE_IMAGE = 0x8,
-// ASSET_TYPE_SOUND = 0x9,
-// ASSET_TYPE_SND_VOLUME_FALLOFF_CURVE - new, needs research
-// ASSET_TYPE_SND_LPF_CURVE - new, needs research
+#include "Types\SndAliasList.h" // needs research
+#include "Types\SndVfCurve.h" // needs research
+#include "Types\SndLpfCurve.h" // needs research
 // ASSET_TYPE_LOADED_SOUND - new, needs research
 // ASSET_TYPE_CLIPMAP_SP
 // ASSET_TYPE_CLIPMAP_MP - used to be CLIPMAP_PVS, anything else change?
@@ -27,7 +27,7 @@
 // ASSET_TYPE_MENULIST
 // ASSET_TYPE_MENU
 #include "Types\LocalizeEntry.h"
-// ASSET_TYPE_WEAPON
+#include "Types\WeaponCompleteDef.h"
 // ASSET_TYPE_SNDDRIVER_GLOBALS
 #include "Types\FxEffectDef.h"
 // ASSET_TYPE_IMPACT_FX
@@ -42,7 +42,7 @@
 // ASSET_TYPE_STRUCTURED_DATA_DEF
 #include "Types\TracerDef.h"
 #include "Types\LaserDef.h" // new, needs research
-// ASSET_TYPE_VEHICLE
+#include "Types\VehicleDef.h"
 // ASSET_TYPE_ADDON_MAP_ENTS - possibly (?) never used
 #include "Types\ShellshockParams.h"
 // ASSET_TYPE_VOLUMESETTING - new, needs research
