@@ -46,7 +46,7 @@ namespace Util
 
 			const char* msg = buf;
 
-			Symbols::CL_ConsolePrint(0, 0, msg, 0, 0, 0);
+			Symbols::MP_Demo::CL_ConsolePrint(0, 0, msg, 0, 0, 0);
 
 			LogPrintMessage(msg);
 			return buf;

@@ -12,7 +12,7 @@ namespace Util
 
 		void Add(const char* cmdName, void(__cdecl* function)())
 		{
-			Symbols::Cmd_AddCommand(cmdName, function, allocedCmd());
+			Symbols::MP_Demo::Cmd_AddCommand(cmdName, function, allocedCmd());
 		}
 	}
 }

@@ -43,7 +43,7 @@ namespace Loader
 	{
 		//RegisterModule("Assets",				Assets::Load,				Assets::Unload);
 		RegisterModule("Patches",				Patches::Load,				Patches::Unload);
-#ifdef MP_Demo
+#ifndef SP_DEV
 		RegisterModule("PrintPatches",			PrintPatches::Load,			PrintPatches::Unload);
 #endif
 

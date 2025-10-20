@@ -66,7 +66,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PreprocessorDefinitions>NDEBUG;_XBOX;RELEASE</PreprocessorDefinitions>
+      <PreprocessorDefinitions>MP_DEMO;NDEBUG;_XBOX;RELEASE</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeaderFile>Std_Include.hpp</PrecompiledHeaderFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>

@@ -3,14 +3,14 @@ namespace PrintPatches
 	Util::Hook::Detour Cmd_AddCommand_Hook;
 	void Cmd_AddCommand(const char* cmdName, void (__cdecl* function)(), Structs::cmd_function_s* allocedCmd)
 	{
-		auto existingCmd = Symbols::Cmd_FindCommand(cmdName);
+		auto existingCmd = Symbols::MP_Demo::Cmd_FindCommand(cmdName);
 		if (existingCmd)
 		{
 			Util::Print::Printf("Cmd_AddCommand: %s already defined\n", cmdName);
 			return;
 		}
 
-		auto Invoke = Cmd_AddCommand_Hook.Invoke<Symbols::Cmd_AddCommand_t>();
+		auto Invoke = Cmd_AddCommand_Hook.Invoke<Symbols::MP_Demo::Cmd_AddCommand_t>();
 		Invoke(cmdName, function, allocedCmd);
 	}
 
@@ -44,7 +44,7 @@ namespace PrintPatches
 		{
 			reason = Util::String::Va("%s is write protected.\n", dvar->name);
 		}
-		else if (source == Structs::DVAR_SOURCE_EXTERNAL && Symbols::Dvar_IsCheatProtected(dvar->flags))
+		else if (source == Structs::DVAR_SOURCE_EXTERNAL && Symbols::MP_Demo::Dvar_IsCheatProtected(dvar->flags))
 		{
 			reason = Util::String::Va("%s is cheat protected.\n", dvar->name);
 		}
@@ -68,12 +68,12 @@ namespace PrintPatches
 	Util::Hook::Detour MSG_InitHuffman_Hook;
 	void MSG_InitHuffman()
 	{
-		int start = Symbols::Sys_Milliseconds();
+		int start = Symbols::MP_Demo::Sys_Milliseconds();
 
 		auto Invoke = MSG_InitHuffman_Hook.Invoke<void(*)()>();
 		Invoke();
 
-		int end = Symbols::Sys_Milliseconds();
+		int end = Symbols::MP_Demo::Sys_Milliseconds();
 
 		Util::Print::Printf("Huffman Took %d Milliseconds\n", end - start);
 	}

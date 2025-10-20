@@ -66,7 +66,7 @@ namespace Assets
 		FILE* f = fopen(path, "wb");
 		if (!f)
 		{
-			Symbols::Com_Printf(0, "dumping error: unable to write to path '%s'\n", path);
+			//Symbols::Com_Printf(0, "dumping error: unable to write to path '%s'\n", path);
 			return;
 		}
 
@@ -75,7 +75,7 @@ namespace Assets
 		if (!buf)
 		{
 			fclose(f);
-			Symbols::Com_Printf(0, "dumping error: ran out of memory to dump '%s'\n", rawFile->name);
+			//Symbols::Com_Printf(0, "dumping error: ran out of memory to dump '%s'\n", rawFile->name);
 			return;
 		}
 
@@ -101,7 +101,7 @@ namespace Assets
 			}
 			else
 			{
-				Symbols::Com_Printf(0, "dumping error: inflateInit failed with '%s'\n", rawFile->name);
+				//Symbols::Com_Printf(0, "dumping error: inflateInit failed with '%s'\n", rawFile->name);
 			}
 
 			//Util::Print::Printf("decompressed rawfile '%s'\n", rawFile->name);
@@ -113,7 +113,7 @@ namespace Assets
 		}
 
 		fwrite(buf, 1, bytesToWrite, f);
-		Symbols::Com_Printf(0, "dumped rawfile '%s'\n", rawFile->name);
+		//Symbols::Com_Printf(0, "dumped rawfile '%s'\n", rawFile->name);
 
 		fclose(f);
 		free(buf);
