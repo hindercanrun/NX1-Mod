@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Patches
+namespace Drawing
 {
 	namespace SP_Dev
 	{
@@ -20,7 +20,6 @@ namespace Patches
 
 	namespace MP_Demo
 	{
-		void Load();
-		void Unload();
+		// TODO
 	}
 }

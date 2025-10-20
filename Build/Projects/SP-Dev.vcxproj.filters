@@ -77,6 +77,12 @@
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\ShellshockParams.cpp">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Util\FPS.h">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Modules\Drawing.cpp">
+      <Filter>Components\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Std_Include.h" />
@@ -148,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\components\modules\assets\types\ShellshockParams.h">
       <Filter>Components\Modules\Assets\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Drawing.h">
+      <Filter>Components\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

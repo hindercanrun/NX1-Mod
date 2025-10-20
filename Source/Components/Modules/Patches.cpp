@@ -213,12 +213,16 @@ namespace Patches
 
 	namespace MP_Dev
 	{
+#ifdef MP_DEV
 		// TODO
+#endif
 	}
 
 	namespace SP_Demo
 	{
+#ifdef SP_DEMO
 		// TODO
+#endif
 	}
 
 	namespace MP_Demo

@@ -1,16 +1,11 @@
 #pragma once
 
-#define TITLE_ID 0x4156089E // nx1
+#define TITLE_ID		0x4156089E // nx1
 
-#define BASE_FOLDER "nx1-data"
+#define BASE_FOLDER		"nx1-data"
 
-typedef unsigned int   uInt;  /* 16 bits or more */
-
-typedef void* voidpf;
-typedef unsigned char Bytef;
-
-typedef voidpf (*alloc_func)(voidpf opaque, uInt items, uInt size);
-typedef void   (*free_func)(voidpf opaque, voidpf address);
+#define NOMINMAX
+#define MAX_CHARS		std::numeric_limits<int>::max()
 
 #include <cstdint>
 #include <cstring>

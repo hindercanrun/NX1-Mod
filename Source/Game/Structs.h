@@ -86,48 +86,37 @@ namespace Structs
 		int dummy;
 	};
 
-	typedef struct
+	struct db_z_stream_s
 	{
-		Bytef* next_in; /* next input byte */
-		uInt avail_in;  /* number of bytes available at next_in */
-		uInt total_in;  /* total number of input bytes read so far */
-
-		unsigned __int8* next_out; /* next output byte will go here */
-		uInt avail_out; /* remaining free space at next_out */
-		uInt total_out; /* total number of bytes output so far */
-
-		char* msg; /* last error message, NULL if no error */
-
-		db_internal_state* state; /* not visible by applications */
-
-		alloc_func zalloc;  /* used to allocate the internal state */
-		free_func  zfree;   /* used to free the internal state */
-		voidpf opaque; /* private data object passed to zalloc and zfree */
-
-		int data_type; /* best guess about the data type: binary or text for deflate, or the decoding state for inflate */
-	} db_z_stream_s;
+		unsigned char *next_in;
+		unsigned int avail_in;
+		unsigned int total_in;
+		unsigned char *next_out;
+		unsigned int avail_out;
+		unsigned int total_out;
+		char *msg;
+		db_internal_state *state;
+		unsigned char *(__cdecl *zalloc)(unsigned char *, unsigned int, unsigned int);
+		void (__cdecl *zfree)(unsigned char *, unsigned char *);
+		unsigned char *opaque;
+		int data_type;
+	};
 
 	struct DBLoadData
 	{
-		DBFile* p_file;
-		int outstandingRead;
-
-		Bytef* p_fileBuffer;
-		uInt readSize;
-		uInt completedReadSize;
-		uInt offset;
-
-		Bytef* p_startIn;
-
-		OVERLAPPED overlapped;
-
-		uInt readError;
-
-		db_z_stream_s stream;
-
-		uInt lookaheadReadSize;
-		uInt lookaheadOffset;
-		uInt lookaheadClearAvailIn;
+	  DBFile *p_file;
+	  int outstandingRead;
+	  unsigned char *p_fileBuffer;
+	  unsigned int readSize;
+	  unsigned int completedReadSize;
+	  unsigned int offset;
+	  unsigned char *p_startIn;
+	  OVERLAPPED overlapped;
+	  unsigned int readError;
+	  db_z_stream_s stream;
+	  unsigned int lookaheadReadSize;
+	  unsigned int lookaheadOffset;
+	  unsigned int lookaheadClearAvailIn;
 	};
 
 	struct XZoneInfo
@@ -135,6 +124,14 @@ namespace Structs
 		const char* name;
 		int allocFlags;
 		int freeFlags;
+	};
+
+	enum EScreenLayer : int
+	{
+		SL_SYSTEM = 0x0,
+		SL_HUD_BOB_NO_DISTORT = 0x1,
+		SL_HUD_DISTORT = 0x2,
+		SL_NUM_LAYERS = 0x3,
 	};
 
 enum XAssetType : __int32
@@ -191,11 +188,30 @@ enum XAssetType : __int32
   ASSET_TYPE_STRING = 0x30,
   ASSET_TYPE_ASSETLIST = 0x31,
 };
-
-struct LocalizeEntry
+/*
+struct Glyph
 {
-  const char *value;
-  const char *name;
+  unsigned __int16 letter;
+  char x0;
+  char y0;
+  unsigned __int8 dx;
+  unsigned __int8 pixelWidth;
+  unsigned __int8 pixelHeight;
+  float s0;
+  float t0;
+  float s1;
+  float t1;
+};
+*/
+/* 5318 */
+struct Font_s
+{
+  //const char *fontName;
+  //int pixelHeight;
+  //int glyphCount;
+  //Material *material;
+  //Material *glowMaterial;
+  //Glyph *glyphs;
 };
 
 union XAssetHeader
@@ -226,7 +242,7 @@ union XAssetHeader
   Font_s *font;
   MenuList *menuList;
   menuDef_t *menu;*/
-  LocalizeEntry *localize;
+  //LocalizeEntry *localize;
   /*WeaponCompleteDef *weapon;
   SndDriverGlobals *sndDriverGlobals;
   const FxEffectDef *fx;

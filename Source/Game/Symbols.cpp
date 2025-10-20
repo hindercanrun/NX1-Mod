@@ -16,6 +16,8 @@ namespace Symbols
 		Dvar_ValueToString_t Dvar_ValueToString = Dvar_ValueToString_t(0x82372F70);
 		Dvar_IsCheatProtected_t Dvar_IsCheatProtected = Dvar_IsCheatProtected_t(0x82372920);
 
+		R_AddCmdDrawText_t R_AddCmdDrawText = R_AddCmdDrawText_t(0x826FCB00);
+
 		Sys_Milliseconds_t Sys_Milliseconds = Sys_Milliseconds_t(0x823A6C20);
 
 		Structs::DBLoadData* g_load = (Structs::DBLoadData*)0x8283DA90;

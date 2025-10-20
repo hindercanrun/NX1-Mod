@@ -43,6 +43,7 @@ namespace Loader
 	{
 #ifdef SP_DEV
 		RegisterModule("Assets",				Assets::SP_Dev::Load,				Assets::SP_Dev::Unload);
+		RegisterModule("Drawing",				Drawing::SP_Dev::Load,				Drawing::SP_Dev::Unload);
 		RegisterModule("Patches",				Patches::SP_Dev::Load,				Patches::SP_Dev::Unload);
 #elif MP_DEMO
 		RegisterModule("Assets",				Assets::MP_Demo::Load,				Assets::MP_Demo::Unload);
