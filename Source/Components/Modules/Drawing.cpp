@@ -43,7 +43,7 @@ namespace Drawing
 			float colourBad[4]  = { 1.0f, 0.3f, 0.3f, 1.0f };
 
 			float fpsValue = g_fps.GetFPS();
-			int fpsInt = (int)fpsValue + 0.5f;
+			int fpsInt = static_cast<int>(fpsValue + 0.5f);
 
 			float* textColour = (fpsInt >= 60)
 				? colourGood
