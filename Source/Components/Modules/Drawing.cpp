@@ -36,6 +36,8 @@ namespace Drawing
 
 			if (Symbols::SP_Dev::Con_IsActive(0))
 				return;
+			if (Symbols::SP_Dev::DevGui_IsActive())
+				return;
 
 			float colour[4] = { 1.0f, 1.0f, 1.0f, 0.25f };
 

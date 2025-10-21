@@ -22,6 +22,9 @@ namespace Symbols
 		typedef void (*Con_DrawSolidConsole_t)(int localClientNum);
 		extern Con_DrawSolidConsole_t Con_DrawSolidConsole;
 
+		typedef BOOL (*DevGui_IsActive_t)();
+		extern DevGui_IsActive_t DevGui_IsActive;
+
 		typedef BOOL (*Key_IsCatcherActive_t)(int localClientNum, int mask);
 		extern Key_IsCatcherActive_t Key_IsCatcherActive;
 

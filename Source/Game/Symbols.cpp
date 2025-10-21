@@ -11,6 +11,8 @@ namespace Symbols
 		Con_CheckResize_t Con_CheckResize = Con_CheckResize_t(0x822072D0);
 		Con_DrawSolidConsole_t Con_DrawSolidConsole = Con_DrawSolidConsole_t(0x8220E9D0);
 
+		DevGui_IsActive_t DevGui_IsActive = DevGui_IsActive_t(0x8229CB50);
+
 		Key_IsCatcherActive_t Key_IsCatcherActive = Key_IsCatcherActive_t(0x82217FB0);
 
 		R_AddCmdDrawText_t R_AddCmdDrawText = R_AddCmdDrawText_t(0x826FCB00);
