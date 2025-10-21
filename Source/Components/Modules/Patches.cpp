@@ -3,12 +3,26 @@ namespace Patches
 	namespace SP_Dev
 	{
 #ifdef SP_DEV
+		Util::Hook::Detour printf_Hook;
+		Util::Hook::Detour _printf_Hook;
+		void _printf(const char* fmt, ...)
+		{
+			char buf[256];
+
+			va_list args;
+			va_start(args, fmt);
+			vsnprintf(buf, sizeof(buf), fmt, args);
+			va_end(args);
+
+			Symbols::SP_Dev::Com_Printf(0, "%s", buf);
+		}
+
 		Util::Hook::Detour FS_InitFilesystem_Hook;
 		void FS_InitFilesystem()
 		{
 			DWORD start = GetTickCount(); // We could use Sys_Milliseconds here buuut GetTickCount works fine
 
-			Symbols::SP_Dev::Com_Printf(0, "\nLoading modules...\n");
+			Symbols::SP_Dev::Com_Printf(0, "\nLoading modules...\n"); // TODO: figure out why this dont print
 			for (int i = 0; i < Loader::g_moduleCount; ++i)
 			{
 				Symbols::SP_Dev::Com_Printf(0, "%d: %s\n", i + 1, Loader::g_modules[i].name);
@@ -119,6 +133,10 @@ namespace Patches
 			Util::Hook::SetValue(0x8252119C, 0x60000000); // LiveAntiCheat_UserSignedOut
 			Util::Hook::SetValue(0x825CD10C, 0x60000000); // LiveAntiCheat_OnChallengesReceived
 
+			// detour printf output to Com_Printf instead
+			printf_Hook.Create(printf, _printf);
+			_printf_Hook.Create(0x8277B188, _printf); // make sure we grab the games version too
+
 			// print all our loaded modules
 			FS_InitFilesystem_Hook.Create(0x824C34F0, FS_InitFilesystem);
 
@@ -180,6 +198,7 @@ namespace Patches
 			// skip main_lockout menu
 			Util::Hook::SetValue(0x8242CDB8, 0x38800001); // ui_skipMainLockout
 
+			// unlock fps
 			Util::Hook::SetValue(0x827014DC, 0x38800000); // r_vsync 0
 			Util::Hook::SetValue(0x82428FD0, 0x38800000); // com_maxfps 0
 
@@ -193,6 +212,7 @@ namespace Patches
 			// kill loc errors
 			Util::Hook::SetValue(0x82496DFC, 0xFC400090); // loc_warningsAsErrors
 
+			// disable this by default cause of our new fps counter
 			Util::Hook::SetValue(0x821BB0F8, 0x38800000); // cg_drawFPS
 		}
 
