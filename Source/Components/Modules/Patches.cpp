@@ -155,10 +155,10 @@ namespace Patches
 
 		void AssertRemovals()
 		{
-			Util::Hook::SetValue(0x824F35F0, 0x60000000);
-			Util::Hook::SetValue(0x824F3D5C, 0x60000000);
-			Util::Hook::SetValue(0x824F3ABC, 0x60000000);
-			Util::Hook::SetValue(0x824F3858, 0x60000000);
+			Util::Hook::SetValue(0x824F35F0, 0x60000000); // sys mem changed to something no expected
+			Util::Hook::SetValue(0x824F3D5C, 0x60000000); // ^^
+			Util::Hook::SetValue(0x824F3ABC, 0x60000000); // ^^
+			Util::Hook::SetValue(0x824F3858, 0x60000000); // ^^
 		}
 
 		void StringEdits()
@@ -203,6 +203,7 @@ namespace Patches
 			COM_PlayIntroMovies_Hook.Clear();
 			getBuildNumber_Hook.Clear();
 			LSP_CheckOngoingTasks_Hook.Clear();
+			MAssertVargs_Hook.Clear();
 		}
 
 		void Load()
