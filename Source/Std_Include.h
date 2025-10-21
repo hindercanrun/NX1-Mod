@@ -1,11 +1,13 @@
 #pragma once
 
-#define TITLE_ID		0x4156089E // nx1
+#define TITLE_ID			0x4156089E // nx1
 
-#define BASE_FOLDER		"nx1-data"
+#define BASE_FOLDER			"nx1-data"
 
 #define NOMINMAX
-#define MAX_CHARS		std::numeric_limits<int>::max()
+#define MAX_CHARS			std::numeric_limits<int>::max()
+
+#define KEYCATCH_CONSOLE	0x1
 
 #include <cstdint>
 #include <cstring>

@@ -19,6 +19,16 @@ namespace Drawing
 			return 0;
 		}
 
+		Util::Hook::Detour Con_DrawConsole_Hook;
+		void Con_DrawConsole(int localClientNum)
+		{
+			Symbols::SP_Dev::Con_CheckResize(Symbols::SP_Dev::scrPlaceFull);
+			if (Symbols::SP_Dev::Key_IsCatcherActive(localClientNum, KEYCATCH_CONSOLE))
+			{
+				Symbols::SP_Dev::Con_DrawSolidConsole(localClientNum);
+			}
+		}
+
 		void DrawWatermark()
 		{
 			if (!*Font)
@@ -73,15 +83,19 @@ namespace Drawing
 
 		void Hooks()
 		{
-			Font = (Structs::Font_s**)0x8423B21C; // fonts/smallfont
+			Font = (Structs::Font_s**)0x8423B21C; // fonts/fwsmallfont
 
-			// Match the Dev Gui safe area on PC!
+			// change the safe area to match pc
 			DevGui_GetScreenXPad_Hook.Create(0x8229D748, DevGui_GetScreenXPad);
 			DevGui_GetScreenYPad_Hook.Create(0x8229D7B0, DevGui_GetScreenYPad);
 
+			// change the safe area to match pc
+			Con_DrawConsole_Hook.Create(0x8220EA90, Con_DrawConsole);
+
+			// draw our watermark and fps counter
 			CL_DrawScreen_Hook.Create(0x8221F858, CL_DrawScreen);
 
-			// Disable some drawing
+			// disable some unneeded drawing
 			Util::Hook::SetValue(0x8221F894, 0x60000000); // CG_DrawVersion
 			Util::Hook::SetValue(0x824A6F3C, 0x60000000); // UI_DrawBuildNumber
 		}

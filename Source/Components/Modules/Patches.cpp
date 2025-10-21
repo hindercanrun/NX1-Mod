@@ -190,7 +190,7 @@ namespace Patches
 			// kill loc errors
 			Util::Hook::SetValue(0x82496DFC, 0xFC400090); // loc_warningsAsErrors
 
-			Util::Hook::SetValue(0x82429338, 0x38800000); // loc_warningsAsErrors
+			Util::Hook::SetValue(0x821BB0F8, 0x38800000); // cg_drawFPS
 		}
 
 		void ClearHooks()

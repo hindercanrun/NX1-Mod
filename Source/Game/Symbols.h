@@ -19,6 +19,12 @@ namespace Symbols
 		typedef void (*CL_ConsolePrint_t)(int localClientNum, int channel, const char* txt, int duration, int pixelWidth, int flags);
 		extern CL_ConsolePrint_t CL_ConsolePrint;
 
+		typedef void (*Con_CheckResize_t)(const Structs::ScreenPlacement* scrPlace);
+		extern Con_CheckResize_t Con_CheckResize;
+
+		typedef void (*Con_DrawSolidConsole_t)(int localClientNum);
+		extern Con_DrawSolidConsole_t Con_DrawSolidConsole;
+
 		typedef HRESULT (*DB_AuthLoad_InflateInit_t)(Structs::db_z_stream_s* stream, int isSecure, const char* filename);
 		extern DB_AuthLoad_InflateInit_t DB_AuthLoad_InflateInit;
 
@@ -28,8 +34,11 @@ namespace Symbols
 		typedef const char* (*Dvar_ValueToString_t)(const Structs::dvar_t* dvar, Structs::DvarValue value);
 		extern Dvar_ValueToString_t Dvar_ValueToString;
 
-		typedef int (*Dvar_IsCheatProtected_t)(unsigned __int16 flags);
+		typedef int (*Dvar_IsCheatProtected_t)(unsigned short flags);
 		extern Dvar_IsCheatProtected_t Dvar_IsCheatProtected;
+
+		typedef bool (*Key_IsCatcherActive_t)(int localClientNum, int mask);
+		extern Key_IsCatcherActive_t Key_IsCatcherActive;
 
 		typedef void (*R_AddCmdDrawText_t)(const char* text, int maxChars, Structs::Font_s* font, float x, float y, float xScale, float yScale, float rotation, const float* colour, int style, Structs::EScreenLayer layer);
 		extern R_AddCmdDrawText_t R_AddCmdDrawText;
@@ -38,6 +47,8 @@ namespace Symbols
 		extern Sys_Milliseconds_t Sys_Milliseconds;
 
 		extern Structs::DBLoadData* g_load;
+
+		extern Structs::ScreenPlacement* scrPlaceFull;
 	}
 
 	namespace MP_Dev
