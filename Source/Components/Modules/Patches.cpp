@@ -107,8 +107,6 @@ namespace Patches
 
 		void Hooks()
 		{
-			MAssertVargs_Hook.Create(0x824BCD10, MAssertVargs);
-
 			Util::Hook::SetValue(0x824CF6C0, 0x60000000);
 
 			// issue fix: disable Black Box
@@ -144,6 +142,9 @@ namespace Patches
 			// dont check any lsp tasks
 			LSP_CheckOngoingTasks_Hook.Create(0x825A2C68, LSP_CheckOngoingTasks);
 
+			// our custom assertion handler
+			MAssertVargs_Hook.Create(0x824BCD10, MAssertVargs);
+
 			// remove autoexec dev
 			Util::Hook::SetValue(0x8222CC84, 0x60000000);
 			Util::Hook::SetValue(0x82429748, 0x60000000);
@@ -162,10 +163,10 @@ namespace Patches
 			// example:
 			// Util::Hook::SetString(<address>, <string>); // <comment> (optional)
 
-			Util::Hook::SetString(0x8201F030, "%s> "); // uhh just make NX1-Mod look nicer
-			Util::Hook::SetString(0x8201F03C, "NX1-Mod"); // NX1 GAMING !!!!!!
+			Util::Hook::SetString(0x8201F030, "%s > "); // uhh just make NX1-Mod look nicer
+			Util::Hook::SetString(0x8201F03C, "NX1-Mod"); // NX1 MODDING !!!!!!
 			Util::Hook::SetString(0x8201EEC4, "Build 1866586"); // shorten that string!
-			Util::Hook::SetString(0x82076B88, "");
+			Util::Hook::SetString(0x82076B88, ""); // timestamp in console log
 		}
 
 		void DVarEdits()
@@ -179,15 +180,17 @@ namespace Patches
 			Util::Hook::SetValue(0x827014DC, 0x38800000); // r_vsync 0
 			Util::Hook::SetValue(0x82428FD0, 0x38800000); // com_maxfps 0
 
-			// kill com_statmon, it looks ugly
-			Util::Hook::SetValue(0x82702E54, 0x38800000);
-			Util::Hook::SetValue(0x824290F8, 0x38800000);
+			// kill stat mon, it looks ugly
+			Util::Hook::SetValue(0x82702E54, 0x38800000); // com_statmon
+			Util::Hook::SetValue(0x824290F8, 0x38800000); // com_statmon
 
 			// kill view pos
-			Util::Hook::SetValue(0x821BB110, 0xFC400090);
+			Util::Hook::SetValue(0x821BB110, 0xFC400090); // cg_drawViewpos
 
 			// kill loc errors
 			Util::Hook::SetValue(0x82496DFC, 0xFC400090); // loc_warningsAsErrors
+
+			Util::Hook::SetValue(0x82429338, 0x38800000); // loc_warningsAsErrors
 		}
 
 		void ClearHooks()
