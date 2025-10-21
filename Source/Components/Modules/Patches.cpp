@@ -57,6 +57,18 @@ namespace Patches
 			Symbols::SP_Dev::Cbuf_AddText(0, "autocinematic title\n");
 		}
 
+		Util::Hook::Detour Com_Init_Hook;
+		void Com_Init(const char* p_command_line)
+		{
+			auto Invoke = Com_Init_Hook.Invoke<void(*)(const char*)>();
+			Invoke(p_command_line);
+
+			if (p_command_line && *p_command_line)
+			{
+				Symbols::SP_Dev::Com_Printf(16, "Command Line:\n%s\n\n", p_command_line);
+			}
+		}
+
 		Util::Hook::Detour getBuildNumber_Hook;
 		const char* getBuildNumber()
 		{
@@ -146,6 +158,8 @@ namespace Patches
 			// play our own intro movie
 			COM_PlayIntroMovies_Hook.Create(0x82428EF0, COM_PlayIntroMovies);
 
+			Com_Init_Hook.Create(0x8242DB20, Com_Init);
+
 			// remove annoying "  dvar set" print
 			Util::Hook::SetValue(0x824D920C, 0x60000000);
 
@@ -169,6 +183,7 @@ namespace Patches
 		void PrintRemovals()
 		{
 			Util::Hook::SetValue(0x824CF6C0, 0x60000000); // missing soundalias
+			Util::Hook::SetValue(0x8242DBB8, 0x60000000); // the cmd line input
 		}
 
 		void AssertRemovals()
