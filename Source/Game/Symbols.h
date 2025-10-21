@@ -31,6 +31,8 @@ namespace Symbols
 		typedef void (*R_AddCmdDrawText_t)(const char* text, int maxChars, Structs::Font_s* font, float x, float y, float xScale, float yScale, float rotation, const float* colour, int style, Structs::EScreenLayer layer);
 		extern R_AddCmdDrawText_t R_AddCmdDrawText;
 
+		extern Structs::CmdArgs* cmd_args;
+
 		extern Structs::ScreenPlacement* scrPlaceFull;
 	}
 

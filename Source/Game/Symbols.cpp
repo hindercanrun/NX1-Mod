@@ -17,6 +17,8 @@ namespace Symbols
 
 		R_AddCmdDrawText_t R_AddCmdDrawText = R_AddCmdDrawText_t(0x826FCB00);
 
+		Structs::CmdArgs* cmd_args = (Structs::CmdArgs*)0x83A76D48;
+
 		Structs::ScreenPlacement* scrPlaceFull = (Structs::ScreenPlacement*)0x82B15C08;
 	}
 

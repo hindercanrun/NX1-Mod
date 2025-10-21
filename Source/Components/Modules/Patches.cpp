@@ -142,6 +142,33 @@ namespace Patches
 			_snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
 		}
 
+		void Cmd_NX1IsGay_f()
+		{
+			Util::Command::Args Args;
+
+			if (Args.Size() < 2)
+			{
+				Symbols::SP_Dev::Com_Printf(0, "usage: nx1-is-gay <something>\n");
+				return;
+			}
+
+			Symbols::SP_Dev::Com_Printf(0, "nx1-is-gay\n");
+		}
+
+		void AddCommands()
+		{
+			Util::Command::Add("nx1-is-gay", Cmd_NX1IsGay_f); // test command
+		}
+
+		Util::Hook::Detour Cmd_Init_Hook;
+		void Cmd_Init()
+		{
+			auto Invoke = Cmd_Init_Hook.Invoke<void(*)()>();
+			Invoke();
+
+			AddCommands();
+		}
+
 		void Hooks()
 		{
 			// issue fix: disable Black Box
@@ -192,6 +219,9 @@ namespace Patches
 			// remove autoexec dev
 			Util::Hook::SetValue(0x8222CC84, 0x60000000);
 			Util::Hook::SetValue(0x82429748, 0x60000000);
+
+			// init our custom cmds
+			Cmd_Init_Hook.Create(0x82423308, Cmd_Init);
 		}
 
 		void PrintRemovals()
@@ -254,6 +284,7 @@ namespace Patches
 			LSP_CheckOngoingTasks_Hook.Clear();
 			MAssertVargs_Hook.Clear();
 			Sys_GetThreadName_Hook.Clear();
+			Cmd_Init_Hook.Clear();
 		}
 
 		void Load()

@@ -2,6 +2,15 @@
 
 namespace Structs
 {
+	struct CmdArgs
+	{
+		int nesting;
+		int localClientNum[8];
+		int controllerIndex[8];
+		int argc[8];
+		const char** argv[8];
+	};
+
 	struct cmd_function_s
 	{
 		cmd_function_s* next;
