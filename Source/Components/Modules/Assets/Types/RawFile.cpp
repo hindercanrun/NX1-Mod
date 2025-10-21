@@ -49,7 +49,7 @@ namespace Assets
         raw->len = (int)size;
         raw->compressedLen = 0; // TODO: support compressed files
 
-		Util::Print::Printf("Loaded raw file '%s' from disk\n", name);
+		//Util::Print::Printf("Loaded raw file '%s' from disk\n", name);
         return raw;
     }
 

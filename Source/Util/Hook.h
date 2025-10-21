@@ -118,5 +118,16 @@ namespace Util
 		{
 			strcpy(reinterpret_cast<char*>(place), value);
 		}
+
+		template <typename T>
+		void SetFloat(size_t place, T* value, size_t count)
+		{
+			void* basePtr = reinterpret_cast<void*>(place);
+			memcpy(basePtr, value, sizeof(T) * count);
+
+			DCBF(basePtr);
+			DCBST(basePtr);
+			SYNC();
+		}
 	}
 }

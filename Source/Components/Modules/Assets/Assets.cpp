@@ -60,7 +60,7 @@ namespace Assets
 		void DB_GetRawBuffer(const RawFile* rawFile, char* buffer, int size)
 		{
 			auto Invoke = DB_GetRawBuffer_Hook.Invoke<void(*)(const RawFile*, char*, int)>();
-			/*
+			
 			// TODO: put this behind a dvar
 			// override the file if it exists
 			RawFile* loaded = LoadRawFiles(rawFile->name);
@@ -71,7 +71,7 @@ namespace Assets
 
 				FreeRawFiles(loaded);
 				return;
-			}*/
+			}
 
 			// TODO: put this behind a dvar
 			//DumpRawFiles(rawFile, buffer, size);

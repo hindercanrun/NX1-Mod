@@ -131,6 +131,17 @@ namespace Patches
 			}
 		}
 
+		Util::Hook::Detour Sys_GetThreadName_Hook;
+		void Sys_GetThreadName(DWORD threadId, char *p_destBuffer, unsigned int destBufferSize)
+		{
+			Util::XBox::DM_THREADINFOEX info;
+			info.Size = sizeof(Util::XBox::DM_THREADINFOEX);
+			Util::XBox::DmGetThreadInfoEx(threadId, &info);
+
+			const char* name = info.ThreadNameAddress;
+			_snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
+		}
+
 		void Hooks()
 		{
 			// issue fix: disable Black Box
@@ -174,6 +185,9 @@ namespace Patches
 
 			// our custom assertion handler
 			MAssertVargs_Hook.Create(0x824BCD10, MAssertVargs);
+
+			// fix thread names appearing as gibberish
+			Sys_GetThreadName_Hook.Create(0x824F41B8, Sys_GetThreadName);
 
 			// remove autoexec dev
 			Util::Hook::SetValue(0x8222CC84, 0x60000000);
@@ -239,6 +253,7 @@ namespace Patches
 			getBuildNumber_Hook.Clear();
 			LSP_CheckOngoingTasks_Hook.Clear();
 			MAssertVargs_Hook.Clear();
+			Sys_GetThreadName_Hook.Clear();
 		}
 
 		void Load()

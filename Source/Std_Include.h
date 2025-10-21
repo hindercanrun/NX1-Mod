@@ -34,6 +34,7 @@
 #include "Util\Hook.h"
 #include "Util\Print.h"
 #include "Util\String.h"
+#include "Util\XBox.h"
 
 #include "Components\Loader.h"
 
