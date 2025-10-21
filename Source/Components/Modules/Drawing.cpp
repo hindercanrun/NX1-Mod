@@ -34,6 +34,9 @@ namespace Drawing
 			if (!*Font)
 				return;
 
+			if (Symbols::SP_Dev::Con_IsActive(0))
+				return;
+
 			float colour[4] = { 1.0f, 1.0f, 1.0f, 0.25f };
 
 			Symbols::SP_Dev::R_AddCmdDrawText("NX1-Mod", MAX_CHARS, *Font, 2.0f, 20.0f, 0.8f, 0.8f, 0.0f, colour, 3, Structs::SL_SYSTEM);
@@ -44,6 +47,9 @@ namespace Drawing
 		void DrawFPS()
 		{
 			if (!*Font)
+				return;
+
+			if (Symbols::SP_Dev::Con_IsActive(0))
 				return;
 
 			g_fps.Update();

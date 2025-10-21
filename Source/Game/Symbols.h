@@ -13,13 +13,16 @@ namespace Symbols
 		typedef void (*Com_Printf_t)(int channel, const char* fmt, ...);
 		extern Com_Printf_t Com_Printf;
 
+		typedef BOOL (*Con_IsActive_t)(int localClientNum);
+		extern Con_IsActive_t Con_IsActive;
+
 		typedef void (*Con_CheckResize_t)(const Structs::ScreenPlacement* scrPlace);
 		extern Con_CheckResize_t Con_CheckResize;
 
 		typedef void (*Con_DrawSolidConsole_t)(int localClientNum);
 		extern Con_DrawSolidConsole_t Con_DrawSolidConsole;
 
-		typedef bool (*Key_IsCatcherActive_t)(int localClientNum, int mask);
+		typedef BOOL (*Key_IsCatcherActive_t)(int localClientNum, int mask);
 		extern Key_IsCatcherActive_t Key_IsCatcherActive;
 
 		typedef void (*R_AddCmdDrawText_t)(const char* text, int maxChars, Structs::Font_s* font, float x, float y, float xScale, float yScale, float rotation, const float* colour, int style, Structs::EScreenLayer layer);

@@ -7,6 +7,7 @@ namespace Symbols
 
 		Com_Printf_t Com_Printf = Com_Printf_t(0x82427A50);
 
+		Con_IsActive_t Con_IsActive = Con_IsActive_t(0x8220CDB8);
 		Con_CheckResize_t Con_CheckResize = Con_CheckResize_t(0x822072D0);
 		Con_DrawSolidConsole_t Con_DrawSolidConsole = Con_DrawSolidConsole_t(0x8220E9D0);
 
