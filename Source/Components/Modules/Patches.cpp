@@ -107,8 +107,6 @@ namespace Patches
 
 		void Hooks()
 		{
-			Util::Hook::SetValue(0x824CF6C0, 0x60000000);
-
 			// issue fix: disable Black Box
 			Util::Hook::SetValue(0x8242C930, 0x60000000); // BB_Init
 			Util::Hook::SetValue(0x8242D4F8, 0x60000000); // BB_Update
@@ -148,6 +146,11 @@ namespace Patches
 			// remove autoexec dev
 			Util::Hook::SetValue(0x8222CC84, 0x60000000);
 			Util::Hook::SetValue(0x82429748, 0x60000000);
+		}
+
+		void PrintRemovals()
+		{
+			Util::Hook::SetValue(0x824CF6C0, 0x60000000); // missing soundalias
 		}
 
 		void AssertRemovals()
@@ -205,6 +208,7 @@ namespace Patches
 		void Load()
 		{
 			Hooks();
+			PrintRemovals();
 			AssertRemovals();
 			StringEdits();
 			DVarEdits();
