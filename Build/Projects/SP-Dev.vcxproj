@@ -82,7 +82,7 @@
       <AdditionalOptions>/dll /ALIGN:128,4096 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ImageXex>
-      <ConfigurationFile>..\xex.xml</ConfigurationFile>
+      <ConfigurationFile>..\build-xex.xml</ConfigurationFile>
     </ImageXex>
     <PreBuildEvent>
       <Command>
@@ -116,7 +116,7 @@
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <ImageXex>
-      <ConfigurationFile>..\xex.xml</ConfigurationFile>
+      <ConfigurationFile>..\build-xex.xml</ConfigurationFile>
     </ImageXex>
     <PreBuildEvent>
       <Command>
