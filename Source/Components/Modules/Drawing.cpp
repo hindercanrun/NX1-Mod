@@ -113,6 +113,9 @@ namespace Drawing
 
 		void ClearHooks()
 		{
+			DevGui_GetScreenXPad_Hook.Clear();
+			DevGui_GetScreenYPad_Hook.Clear();
+			Con_DrawConsole_Hook.Clear();
 			CL_DrawScreen_Hook.Clear();
 		}
 
