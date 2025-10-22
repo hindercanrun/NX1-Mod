@@ -10,11 +10,12 @@ namespace Util
 			return cmd;
 		}
 
-		// TODO: add to MP_DEMO
-#ifdef SP_DEV	
-		Args::Args() : nesting_(Symbols::SP_Dev::cmd_args->nesting)
+		// INFO: modify this when other versions get full custom command support
+		static Structs::CmdArgs*& g_cmd_args = Symbols::SP_Dev::cmd_args;
+
+		Args::Args()
 		{
-			this->nesting_ = Symbols::SP_Dev::cmd_args->nesting - 1;
+			this->nesting_ = g_cmd_args->nesting - 1;
 
 			if (this->nesting_ < 0)
 				this->nesting_ = 0;
@@ -22,16 +23,15 @@ namespace Util
 
 		int Args::Size() const
 		{
-			return Symbols::SP_Dev::cmd_args->argc[this->nesting_];
+			return g_cmd_args->argc[nesting_];
 		}
 
-		const char* Args::Get(const int index) const
+		const char* Args::Get(int index) const
 		{
-			if (index >= this->Size())
+			if (index >= g_cmd_args->argc[this->nesting_])
 				return "";
-			return Symbols::SP_Dev::cmd_args->argv[this->nesting_][index];
+			return g_cmd_args->argv[this->nesting_][index];
 		}
-#endif
 
 		void Add(const char* cmdName, void(__cdecl* function)())
 		{
