@@ -228,6 +228,7 @@ namespace Patches
 		{
 			Util::Hook::SetValue(0x824CF6C0, 0x60000000); // missing soundalias
 			Util::Hook::SetValue(0x8242DBB8, 0x60000000); // the cmd line input
+			Util::Hook::SetValue(0x8251B994, 0x60000000); // unknown map add to xlast
 		}
 
 		void AssertRemovals()
