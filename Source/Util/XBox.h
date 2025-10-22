@@ -4,6 +4,8 @@ namespace Util
 {
 	namespace XBox
 	{
+		DWORD XGetCurrentTitleId();
+
 		struct DM_THREADINFOEX
 		{
 			uint32_t Size;

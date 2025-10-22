@@ -37,26 +37,7 @@ namespace Loader
 			if (g_modules[i].unload)
 				g_modules[i].unload();
 		}
-	}
 
-	void Load()
-	{
-#ifdef SP_DEV
-		RegisterModule("Assets",				Assets::SP_Dev::Load,				Assets::SP_Dev::Unload);
-		RegisterModule("Drawing",				Drawing::SP_Dev::Load,				Drawing::SP_Dev::Unload);
-		RegisterModule("Patches",				Patches::SP_Dev::Load,				Patches::SP_Dev::Unload);
-#elif MP_DEMO
-		RegisterModule("Assets",				Assets::MP_Demo::Load,				Assets::MP_Demo::Unload);
-		RegisterModule("Patches",				Patches::MP_Demo::Load,				Patches::MP_Demo::Unload);
-		RegisterModule("PrintPatches",			PrintPatches::MP_Demo::Load,		PrintPatches::MP_Demo::Unload);
-#endif
-
-		LoadAllModules();
-	}
-
-	void Unload()
-	{
-		UnloadAllModules();
 		g_moduleCount = 0;
 	}
 }

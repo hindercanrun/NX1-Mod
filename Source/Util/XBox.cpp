@@ -2,28 +2,33 @@ namespace Util
 {
 	namespace XBox
 	{
+		DWORD XGetCurrentTitleId()
+		{
+			return XamGetCurrentTitleId();
+		}
+
 		const char* GetFakeThreadName(uint32_t threadId)
 		{
 			switch (threadId % 8)
 			{
 			case 0:
-				return "MainThread";
+				return "Main";
 			case 1:
-				return "RenderThread";
+				return "Render";
 			case 2:
-				return "WorkerThread0";
+				return "Worker0";
 			case 3:
-				return "WorkerThread1";
+				return "Worker1";
 			case 4:
-				return "AudioThread";
+				return "Audio";
 			case 5:
-				return "NetworkThread";
+				return "Network";
 			case 6:
-				return "StreamThread";
+				return "Stream";
 			case 7:
-				return "CommsThread";
+				return "Comms";
 			default:
-				return "UnknownThread";
+				return "Unknown";
 			}
 		}
 

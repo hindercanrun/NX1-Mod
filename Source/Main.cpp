@@ -1,18 +1,23 @@
+void RegisterModules()
+{
+	REGISTER_MODULE(Assets);
+	REGISTER_MODULE(Drawing);
+	REGISTER_MODULE(Patches);
+
+#ifdef MP_DEMO
+	REGISTER_MODULE(PrintPatches);
+#endif
+}
+
 DWORD WINAPI MainThread(LPVOID)
 {
-	bool loadedModules = false;
-
-	while (!loadedModules)
+	while (Util::XBox::XGetCurrentTitleId() != TITLE_ID)
 	{
-		DWORD titleId = XamGetCurrentTitleId();
-		if (titleId == TITLE_ID)
-		{
-			Loader::Load(); // Load our modules.
-			loadedModules = true;
-		}
 		Sleep(50);
 	}
 
+	RegisterModules();
+	Loader::LoadAllModules();
 	return 0;
 }
 
@@ -33,6 +38,7 @@ BOOL APIENTRY DllMain(
 		break;
 	}
 	case DLL_PROCESS_DETACH:
+		Loader::UnloadAllModules();
 		break;
 	}
 

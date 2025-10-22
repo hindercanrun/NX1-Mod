@@ -8,17 +8,37 @@
 
 namespace Loader
 {
-	typedef struct Module
+	struct Module
 	{
 		const char* name;
 		void (*load)();
 		void (*unload)();
-	} Module;
+	};
 
-#define MAX_MODULES 32
+#define MAX_MODULES 128 // big number, nobody should EVER have 128 modules
 	extern Module g_modules[MAX_MODULES];
 	extern int g_moduleCount;
 
-	void Load();
-	void Unload();
+	void RegisterModule(const char* name, void (*load)(), void (*unload)());
+	void LoadAllModules();
+	void UnloadAllModules();
 }
+
+#ifdef SP_DEV
+	#define MODULE_NS(name) name::SP_Dev
+#elif MP_DEMO
+	#define MODULE_NS(name) name::MP_Demo
+#else // fallback
+	#define MODULE_NS(name) name
+#endif
+
+struct ModuleRegistrator
+{
+	ModuleRegistrator(const char* name, void (*load)(), void (*unload)())
+	{
+		Loader::RegisterModule(name, load, unload);
+	}
+};
+
+#define REGISTER_MODULE(name) \
+	static ModuleRegistrator _module_##name(#name, MODULE_NS(name)::Load, MODULE_NS(name)::Unload)
