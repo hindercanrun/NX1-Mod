@@ -152,7 +152,7 @@
     <ClCompile Include="..\..\Source\Util\Hook.cpp" />
     <ClCompile Include="..\..\Source\Util\Print.cpp" />
     <ClCompile Include="..\..\Source\Util\String.cpp" />
-    <ClCompile Include="..\..\Source\Util\Xbox.cpp" />
+    <ClCompile Include="..\..\Source\Util\XBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Dependencies\zlib\zlib.h" />
@@ -185,7 +185,7 @@
     <ClInclude Include="..\..\Source\Util\Hook.h" />
     <ClInclude Include="..\..\Source\Util\Print.h" />
     <ClInclude Include="..\..\Source\Util\String.h" />
-    <ClInclude Include="..\..\Source\Util\Xbox.h" />
+    <ClInclude Include="..\..\Source\Util\XBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

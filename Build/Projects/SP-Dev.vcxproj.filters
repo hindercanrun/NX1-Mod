@@ -83,7 +83,7 @@
     <ClCompile Include="..\..\Source\Components\Modules\Drawing.cpp">
       <Filter>Components\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Util\Xbox.cpp">
+    <ClCompile Include="..\..\Source\Util\XBox.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,7 +176,7 @@
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\WeaponCompleteDef.h">
       <Filter>Components\Modules\Assets\Types</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Util\Xbox.h">
+    <ClInclude Include="..\..\Source\Util\XBox.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
