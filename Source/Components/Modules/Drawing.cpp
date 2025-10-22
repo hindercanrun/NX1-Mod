@@ -44,7 +44,7 @@ namespace Drawing
 			Symbols::SP_Dev::R_AddCmdDrawText("NX1-Mod", MAX_CHARS, *Font, 2.0f, 20.0f, 0.8f, 0.8f, 0.0f, colour, 3, Structs::SL_SYSTEM);
 		}
 
-		Util::FpsCounter g_fps;
+		Util::FPS g_fps;
 
 		void DrawFPS()
 		{
@@ -61,22 +61,18 @@ namespace Drawing
 			float colourBad[4]  = { 1.0f, 0.3f, 0.3f, 1.0f };
 
 			float fpsValue = g_fps.GetFPS();
-			int fpsInt = static_cast<int>(fpsValue + 0.5f);
+			int count = static_cast<int>(fpsValue + 0.5f);
 
-			float* textColour = (fpsInt >= 60)
-				? colourGood
-				: (fpsInt >= 50)
-				? colourOkay
-				: colourBad;
+			float* colour = (count >= 60) ? colourGood :
+								(count >= 50) ? colourOkay : colourBad;
 
-			std::stringstream ss;
-			ss << fpsInt;
-			std::string text = ss.str();
+			char text[16];
+			_snprintf(text, sizeof(text), "%d", count);
+			text[sizeof(text) - 1] = '\0'; // ensure null-termination
 
-			if (fpsInt <= 99)
-				Symbols::SP_Dev::R_AddCmdDrawText(text.c_str(), MAX_CHARS, *Font, 1255.0f, 20.0f, 1.0f, 1.0f, 0.0f, textColour, 3, Structs::SL_SYSTEM);
-			else
-				Symbols::SP_Dev::R_AddCmdDrawText(text.c_str(), MAX_CHARS, *Font, 1245.0f, 20.0f, 1.0f, 1.0f, 0.0f, textColour, 3, Structs::SL_SYSTEM);
+			float x = (count <= 99) ? 1255.0f : 1245.0f;
+
+			Symbols::SP_Dev::R_AddCmdDrawText(text, MAX_CHARS, *Font, x, 20.0f, 1.0f, 1.0f, 0.0f, colour, 3, Structs::SL_SYSTEM);
 		}
 
 		Util::Hook::Detour CL_DrawScreen_Hook;

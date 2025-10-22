@@ -2,10 +2,10 @@
 
 namespace Util
 {
-	class FpsCounter
+	class FPS
 	{
 	public:
-		FpsCounter()
+		FPS()
 		{
 			Reset();
 		}
@@ -45,17 +45,10 @@ namespace Util
 			return 1000.0f / avg;
 		}
 
-		std::string GetDisplayText() const
-		{
-			std::stringstream ss;
-			int fps = static_cast<int>(GetFPS() + 0.5f);
-			ss << fps;
-			return ss.str();
-		}
-
 	private:
 		static const int SAMPLE_COUNT = 32;
 		float frameTimes[SAMPLE_COUNT];
+
 		int index;
 		DWORD lastTick;
 	};
