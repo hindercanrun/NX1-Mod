@@ -143,6 +143,7 @@
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\StringTable.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Assets\Types\TracerDef.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Drawing.cpp" />
+    <ClCompile Include="..\..\Source\Components\Modules\GameLog.cpp" />
     <ClCompile Include="..\..\Source\Components\Modules\Patches.cpp" />
     <ClCompile Include="..\..\Source\Game\Symbols.cpp" />
     <ClCompile Include="..\..\Source\Main.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\VehicleDef.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Assets\Types\WeaponCompleteDef.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Drawing.h" />
+    <ClInclude Include="..\..\Source\Components\Modules\GameLog.h" />
     <ClInclude Include="..\..\Source\Components\Modules\Patches.h" />
     <ClInclude Include="..\..\Source\Game\Structs.h" />
     <ClInclude Include="..\..\Source\Game\Symbols.h" />

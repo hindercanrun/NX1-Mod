@@ -13,5 +13,18 @@ namespace Util
 
 			return buf;
 		}
+
+		const char* GetCurrentTime()
+		{
+			static char buf[16];
+
+			time_t now = time(NULL);
+			now += 8 * 3600; // Adjust to UTC+8 if needed
+
+			struct tm* timeinfo = localtime(&now);
+
+			strftime(buf, sizeof(buf), "%I:%M:%S %p", timeinfo);
+			return buf;
+		}
 	}
 }

@@ -3,8 +3,11 @@
 // modules
 #include "Modules\Assets\Assets.h"
 #include "Modules\Drawing.h"
+#include "Modules\GameLog.h"
 #include "Modules\Patches.h"
+#ifdef MP_DEMO
 #include "Modules\PrintPatches.h"
+#endif
 
 namespace Loader
 {

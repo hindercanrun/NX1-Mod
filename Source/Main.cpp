@@ -2,6 +2,7 @@ void RegisterModules()
 {
 	REGISTER_MODULE(Assets);
 	REGISTER_MODULE(Drawing);
+	REGISTER_MODULE(GameLog);
 	REGISTER_MODULE(Patches);
 
 #ifdef MP_DEMO
