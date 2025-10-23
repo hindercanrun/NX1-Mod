@@ -549,7 +549,7 @@ std::vector<uint8_t> linearData(imageSize);
 			// ASSET_TYPE_MATERIAL
 			// ASSET_TYPE_PIXELSHADER
 			// ASSET_TYPE_TECHNIQUE_SET
-			Load_MapEnts2Ptr_Hook.Create(0x82249638, Load_MapEnts2Ptr);
+			//Load_MapEnts2Ptr_Hook.Create(0x82249638, Load_MapEnts2Ptr);
 			// ASSET_TYPE_SOUND
 			// ASSET_TYPE_SND_VOLUME_FALLOFF_CURVE
 			// ASSET_TYPE_SND_LPF_CURVE
