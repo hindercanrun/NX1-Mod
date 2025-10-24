@@ -240,6 +240,7 @@ namespace Patches
 			Util::Hook::SetValue(0x8251B994, 0x60000000); // unknown map add to xlast
 			Util::Hook::SetValue(0x8242C98C, 0x60000000); // start $init
 			Util::Hook::SetValue(0x8242CA10, 0x60000000); // end $init
+			Util::Hook::SetValue(0x821E32EC, 0x60000000); // looking for alias
 		}
 
 		void AssertRemovals()
