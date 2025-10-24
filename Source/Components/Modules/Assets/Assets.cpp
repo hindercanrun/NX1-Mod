@@ -5,6 +5,7 @@ namespace Assets
 	namespace SP_Dev
 	{
 #ifdef SP_DEV
+#ifdef INCLUDE_ASSET_DUMPERS_AND_LOADERS
 		Util::Hook::Detour Load_PhysPresetPtr_Hook;
 		void Load_PhysPresetPtr(bool atStreamStart)
 		{
@@ -447,6 +448,7 @@ std::vector<uint8_t> linearData(imageSize);
 #endif
 			}
 		}
+#endif
 
 		Util::Hook::Detour DB_GetRawBuffer_Hook;
 		void DB_GetRawBuffer(const RawFile* rawFile, char* buffer, int size)
@@ -471,6 +473,7 @@ std::vector<uint8_t> linearData(imageSize);
 			Invoke(rawFile, buffer, size);
 		}
 
+#ifdef INCLUDE_ASSET_DUMPERS_AND_LOADERS
 		Util::Hook::Detour Load_StringTablePtr_Hook;
 		void Load_StringTablePtr(bool atStreamStart)
 		{
@@ -538,9 +541,11 @@ std::vector<uint8_t> linearData(imageSize);
 #endif
 			}
 		}
+#endif
 
 		void Hooks()
 		{
+#ifdef INCLUDE_ASSET_DUMPERS_AND_LOADERS
 			Load_PhysPresetPtr_Hook.Create(0x82250C00, Load_PhysPresetPtr);
 			// ASSET_TYPE_PHYSCOLLMAP
 			// ASSET_TYPE_XANIMPARTS
@@ -577,7 +582,9 @@ std::vector<uint8_t> linearData(imageSize);
 			// ASSET_TYPE_MPTYPE
 			// ASSET_TYPE_CHARACTER
 			// ASSET_TYPE_XMODELALIAS
+#endif
 			DB_GetRawBuffer_Hook.Create(0x82288630, DB_GetRawBuffer);
+#ifdef INCLUDE_ASSET_DUMPERS_AND_LOADERS
 			Load_StringTablePtr_Hook.Create(0x82263550, Load_StringTablePtr);
 			// ASSET_TYPE_LEADERBOARD
 			// ASSET_TYPE_STRUCTURED_DATA_DEF
@@ -589,6 +596,7 @@ std::vector<uint8_t> linearData(imageSize);
 			// ASSET_TYPE_VOLUMESETTING
 			// ASSET_TYPE_REVERBPRESET
 			Load_FogDefPtr_Hook.Create(0x82265E28, Load_FogDefPtr);
+#endif
 		}
 
 		void Load()
