@@ -65,12 +65,6 @@ namespace Patches
 			Invoke(localClientNum, configFile);
 		}
 
-		Util::Hook::Detour COM_PlayIntroMovies_Hook;
-		void COM_PlayIntroMovies()
-		{
-			Symbols::SP_Dev::Cbuf_AddText(0, "autocinematic title\n");
-		}
-
 		Util::Hook::Detour Com_Init_Hook;
 		void Com_Init(const char* p_command_line)
 		{
@@ -205,9 +199,6 @@ namespace Patches
 			// prevent dupe config executions
 			Com_ExecStartupConfigs_Hook.Create(0x824296C0, Com_ExecStartupConfigs);
 
-			// play our own intro movie
-			COM_PlayIntroMovies_Hook.Create(0x82428EF0, COM_PlayIntroMovies);
-
 			Com_Init_Hook.Create(0x8242DB20, Com_Init);
 
 			// remove annoying "  dvar set" print
@@ -292,7 +283,6 @@ namespace Patches
 		{
 			FS_InitFilesystem_Hook.Clear();
 			Com_ExecStartupConfigs_Hook.Clear();
-			COM_PlayIntroMovies_Hook.Clear();
 			getBuildNumber_Hook.Clear();
 			MAssertVargs_Hook.Clear();
 			Sys_GetThreadName_Hook.Clear();
@@ -352,20 +342,6 @@ namespace Patches
 			Invoke();
 		}
 
-		void PlayIntroMovie()
-		{
-			Symbols::MP_Demo::Cbuf_AddText(0, "autocinematic title\n");
-		}
-
-		Util::Hook::Detour Com_Init_Try_Block_Function_Hook;
-		void Com_Init_Try_Block_Function(const char* p_command_line)
-		{
-			auto Invoke = Com_Init_Try_Block_Function_Hook.Invoke<void(*)(const char*)>();
-			Invoke(p_command_line);
-
-			PlayIntroMovie();
-		}
-
 		Util::Hook::Detour DB_InflateInit_Hook;
 		void DB_InflateInit(int fileIsSecure)
 		{
@@ -420,9 +396,6 @@ namespace Patches
 			// print all our loaded modules
 			FS_InitFilesystem_Hook.Create(0x8235C2A8, FS_InitFilesystem);
 
-			// add a nice intro movie for when the game starts
-			Com_Init_Try_Block_Function_Hook.Create(0x822DC5A8, Com_Init_Try_Block_Function);
-
 			// allow unsigned fast files to load on MP
 			DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
 
@@ -473,7 +446,6 @@ namespace Patches
 		void ClearHooks()
 		{
 			FS_InitFilesystem_Hook.Clear();
-			Com_Init_Try_Block_Function_Hook.Clear();
 			DB_InflateInit_Hook.Clear();
 			getBuildNumber_Hook.Clear();
 			Cmd_Init_Hook.Clear();
