@@ -1,5 +1,3 @@
-#include "../../Util/FPS.h"
-
 namespace Stats
 {
 	namespace SP_Dev

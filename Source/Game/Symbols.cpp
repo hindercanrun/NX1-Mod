@@ -28,6 +28,8 @@ namespace Symbols
 
 		Structs::CmdArgs* cmd_args = (Structs::CmdArgs*)0x83A76D48;
 
+		Structs::DWLogonStatus* g_LogOnStatus = (Structs::DWLogonStatus*)0x852A96EC;
+
 		Structs::GamerSettingState* gamerSettings = (Structs::GamerSettingState*)0x82B0EC48;
 		unsigned int* g_playStartTime = (unsigned int*)0x82B11ED0;
 

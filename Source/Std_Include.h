@@ -9,6 +9,10 @@
 
 #define KEYCATCH_CONSOLE	0x1
 
+#ifdef _XBOX
+#define snprintf _snprintf
+#endif
+
 #include <cstdint>
 #include <cstring>
 #include <string>

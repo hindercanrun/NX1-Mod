@@ -46,6 +46,8 @@ namespace Symbols
 
 		extern Structs::CmdArgs* cmd_args;
 
+		extern Structs::DWLogonStatus* g_LogOnStatus;
+
 		extern Structs::GamerSettingState* gamerSettings;
 		extern unsigned int* g_playStartTime;
 

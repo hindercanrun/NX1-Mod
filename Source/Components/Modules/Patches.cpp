@@ -75,12 +75,6 @@ namespace Patches
 			return Util::String::Va("NX1-Mod");
 		}
 
-		Util::Hook::Detour LSP_CheckOngoingTasks_Hook;
-		void LSP_CheckOngoingTasks(int PacketsInternal)
-		{
-			// null stub
-		}
-
 		Util::Hook::Detour MAssertVargs_Hook;
 		int MAssertVargs(const char* filename, int line, int type, int, const char* fmt, ...)
 		{
@@ -139,7 +133,7 @@ namespace Patches
 			Util::XBox::DmGetThreadInfoEx(threadId, &info);
 
 			const char* name = info.ThreadNameAddress;
-			_snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
+			snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
 		}
 
 		void Cmd_NX1IsGay_f()
@@ -206,9 +200,6 @@ namespace Patches
 
 			// set build version to mine!
 			getBuildNumber_Hook.Create(0x82410188, getBuildNumber);
-
-			// dont check any lsp tasks
-			LSP_CheckOngoingTasks_Hook.Create(0x825A2C68, LSP_CheckOngoingTasks);
 
 			// our custom assertion handler
 			MAssertVargs_Hook.Create(0x824BCD10, MAssertVargs);
@@ -284,7 +275,6 @@ namespace Patches
 			Com_ExecStartupConfigs_Hook.Clear();
 			COM_PlayIntroMovies_Hook.Clear();
 			getBuildNumber_Hook.Clear();
-			LSP_CheckOngoingTasks_Hook.Clear();
 			MAssertVargs_Hook.Clear();
 			Sys_GetThreadName_Hook.Clear();
 			Cmd_Init_Hook.Clear();
