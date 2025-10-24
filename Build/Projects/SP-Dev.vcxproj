@@ -44,7 +44,7 @@
     <IntDir>$(ProjectDir)..\Output\Obj\Release\SP-Dev\</IntDir>
     <OutputFile>$(ProjectDir)..\Output\Bin\Release\SP-Dev\NX1-Mod.exe</OutputFile>
     <ImageXexOutput>$(ProjectDir)..\Output\Bin\Release\SP-Dev\NX1-Mod.xex</ImageXexOutput>
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">
     <LinkIncremental>false</LinkIncremental>
@@ -85,8 +85,7 @@
       <ConfigurationFile>..\build-xex.xml</ConfigurationFile>
     </ImageXex>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>call "D:\ns\nx\1\plugins\NX1Gaming\Tools\generateBuildInfo.bat"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Xbox 360'">
