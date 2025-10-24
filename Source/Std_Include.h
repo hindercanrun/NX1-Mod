@@ -47,4 +47,6 @@
 extern "C"
 {
 	NTSYSAPI DWORD NTAPI XamGetCurrentTitleId(VOID);
+
+	NTSYSAPI void NTAPI DbgPrint(const char* s, ...);
 }

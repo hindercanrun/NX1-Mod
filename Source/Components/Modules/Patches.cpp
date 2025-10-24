@@ -14,7 +14,21 @@ namespace Patches
 			vsnprintf(buf, sizeof(buf), fmt, args);
 			va_end(args);
 
-			Symbols::SP_Dev::Com_Printf(0, "%s", buf);
+			Symbols::SP_Dev::Com_Printf(0, "printf: %s", buf);
+		}
+
+		Util::Hook::Detour DbgPrint_Hook;
+		Util::Hook::Detour _DbgPrint_Hook;
+		void _DbgPrint(const char* fmt, ...)
+		{
+			char buf[256];
+
+			va_list args;
+			va_start(args, fmt);
+			vsnprintf(buf, sizeof(buf), fmt, args);
+			va_end(args);
+
+			Symbols::SP_Dev::Com_Printf(0, "DbgPrint: %s", buf);
 		}
 
 		Util::Hook::Detour FS_InitFilesystem_Hook;
@@ -177,9 +191,13 @@ namespace Patches
 			Util::Hook::SetValue(0x8252119C, 0x60000000); // LiveAntiCheat_UserSignedOut
 			Util::Hook::SetValue(0x825CD10C, 0x60000000); // LiveAntiCheat_OnChallengesReceived
 
-			// detour printf output to Com_Printf instead
+			// detour printf to output to Com_Printf instead
 			printf_Hook.Create(printf, _printf);
 			_printf_Hook.Create(0x8277B188, _printf); // make sure we grab the games version too
+
+			// detour DbgPrint to output to Com_Printf instead
+			DbgPrint_Hook.Create(DbgPrint, _DbgPrint);
+			_DbgPrint_Hook.Create(0x827DD1FC, _DbgPrint); // make sure we grab the games version too
 
 			// print all our loaded modules
 			FS_InitFilesystem_Hook.Create(0x824C34F0, FS_InitFilesystem);
