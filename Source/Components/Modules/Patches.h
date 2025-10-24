@@ -1,0 +1,26 @@
+#pragma once
+
+namespace Patches
+{
+	namespace SP_Dev
+	{
+		void Load();
+		void Unload();
+	}
+
+	namespace MP_Dev
+	{
+		// TODO
+	}
+
+	namespace SP_Demo
+	{
+		// TODO
+	}
+
+	namespace MP_Demo
+	{
+		void Load();
+		void Unload();
+	}
+}
