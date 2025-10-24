@@ -40,48 +40,6 @@ namespace Assets
 			}
 		}
 
-union GfxTexture
-{
-  D3DBaseTexture basemap;
-  D3DLineTexture linemap;
-  D3DTexture map;
-  D3DVolumeTexture volmap;
-  D3DCubeTexture cubemap;
-};
-
-/* 5091 */
-struct CardMemory
-{
-  int platform[1];
-};
-
-/* 5092 */
-struct GfxImageStreamData
-{
-  unsigned __int16 width;
-  unsigned __int16 height;
-  unsigned int pixelSize;
-};
-
-/* 5093 */
-struct GfxImage
-{
-  GfxTexture texture;
-  int format;
-  unsigned __int8 mapType;
-  unsigned __int8 semantic;
-  unsigned __int8 category;
-  CardMemory cardMemory;
-  unsigned __int16 width;
-  unsigned __int16 height;
-  unsigned __int16 depth;
-  unsigned __int8 levelCount;
-  unsigned __int8 cached;
-  unsigned __int8 *pixels;
-  GfxImageStreamData streams[4];
-  const char *name;
-};
-
 // TODO: MAKEFOURCC('D', 'X', 'T', '1');
 // DDS Constants
 const uint32_t DDS_MAGIC = MAKEFOURCC('D', 'D', 'S', ' ');

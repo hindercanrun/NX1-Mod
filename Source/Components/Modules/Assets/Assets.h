@@ -8,7 +8,7 @@
 #include "Types\Material.h"
 // ASSET_TYPE_PIXELSHADER
 // ASSET_TYPE_TECHNIQUE_SET
-// ASSET_TYPE_IMAGE = 0x8,
+#include "Types\GfxImage.h"
 #include "Types\SndAliasList.h" // needs research
 #include "Types\SndVfCurve.h" // needs research
 #include "Types\SndLpfCurve.h" // needs research

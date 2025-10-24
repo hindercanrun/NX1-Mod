@@ -1,2 +1,2 @@
 #pragma once 
-const int GIT_COMMIT = 78; 
+const int GIT_COMMIT = 79; 
