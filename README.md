@@ -1,1 +1,2 @@
-this is provided as-is. if it dont compile for you then too bad
+# NX1-Mod
+What else is there to say?
