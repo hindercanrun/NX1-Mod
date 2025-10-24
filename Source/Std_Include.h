@@ -30,6 +30,8 @@
 #include <io.h>
 #include <time.h>
 
+#include "..\Tools\buildInfo.h"
+
 #include "Game\Structs.h"
 #include "Game\Symbols.h"
 

@@ -3,6 +3,7 @@ namespace Network
 	namespace SP_Dev
 	{
 #ifdef SP_DEV
+/*
 		Util::Hook::Detour sendto_Hook;
 		int sendto_stub(SOCKET s, const char* buf, int len, int flags, sockaddr* to, int tolen)
 		{
@@ -34,20 +35,20 @@ namespace Network
 			*Symbols::SP_Dev::g_LogOnStatus = Structs::DW_NO_ACCOUNT_SIGNED_IN;
 			return Structs::DW_LIVE_CONNECTING;
 		}
-
+*/
 		void Hooks()
 		{
-			sendto_Hook.Create(0x8266A010, sendto_stub);
+			//sendto_Hook.Create(0x8266A010, sendto_stub);
 
-			Live_IsUserSignedInToLive_Hook.Create(0x8251FDB0, Live_IsUserSignedInToLive);
-			LSP_Connected_Hook.Create(0x825A15A8, LSP_Connected);
+			//Live_IsUserSignedInToLive_Hook.Create(0x8251FDB0, Live_IsUserSignedInToLive);
+			//LSP_Connected_Hook.Create(0x825A15A8, LSP_Connected);
 
-			dwGetLogOnStatus_Hook.Create(0x825CD1F8, dwGetLogOnStatus);
+			//dwGetLogOnStatus_Hook.Create(0x825CD1F8, dwGetLogOnStatus);
 		}
 
 		void ClearHooks()
 		{
-			Live_IsUserSignedInToLive_Hook.Clear();
+			//Live_IsUserSignedInToLive_Hook.Clear();
 		}
 
 		void Load()

@@ -72,7 +72,7 @@ namespace Patches
 		Util::Hook::Detour getBuildNumber_Hook;
 		const char* getBuildNumber()
 		{
-			return Util::String::Va("NX1-Mod");
+			return Util::String::Va("NX1-Mod %i", GIT_COMMIT);
 		}
 
 		Util::Hook::Detour MAssertVargs_Hook;
@@ -239,7 +239,7 @@ namespace Patches
 
 			Util::Hook::SetString(0x8201F030, "%s > "); // uhh just make NX1-Mod look nicer
 			Util::Hook::SetString(0x8201F03C, "NX1-Mod"); // NX1 MODDING !!!!!!
-			Util::Hook::SetString(0x8201EEC4, "Build 1866586"); // shorten that string!
+			Util::Hook::SetString(0x8201EEC4, Util::String::Va("Version: r%i", GIT_COMMIT)); // shorten that string!
 			Util::Hook::SetString(0x82076B88, ""); // timestamp in console log
 		}
 
