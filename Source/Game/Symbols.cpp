@@ -2,6 +2,8 @@ namespace Symbols
 {
 	namespace SP_Dev
 	{
+		// functions
+
 		Cmd_AddCommand_t Cmd_AddCommand = Cmd_AddCommand_t(0x824221C8);
 		Cbuf_AddText_t Cbuf_AddText = Cbuf_AddText_t(0x82421160);
 
@@ -13,11 +15,21 @@ namespace Symbols
 
 		DevGui_IsActive_t DevGui_IsActive = DevGui_IsActive_t(0x8229CB50);
 
+		Dvar_FindVar_t Dvar_FindVar = Dvar_FindVar_t(0x824D98C8);
+
 		Key_IsCatcherActive_t Key_IsCatcherActive = Key_IsCatcherActive_t(0x82217FB0);
 
 		R_AddCmdDrawText_t R_AddCmdDrawText = R_AddCmdDrawText_t(0x826FCB00);
 
+		Sys_Milliseconds_t Sys_Milliseconds = Sys_Milliseconds_t(0x825248B8);
+		Sys_MillisecondsRaw_t Sys_MillisecondsRaw = Sys_MillisecondsRaw_t(0x82524918);
+
+		// variables
+
 		Structs::CmdArgs* cmd_args = (Structs::CmdArgs*)0x83A76D48;
+
+		Structs::GamerSettingState* gamerSettings = (Structs::GamerSettingState*)0x82B0EC48;
+		unsigned int* g_playStartTime = (unsigned int*)0x82B11ED0;
 
 		Structs::ScreenPlacement* scrPlaceFull = (Structs::ScreenPlacement*)0x82B15C08;
 	}

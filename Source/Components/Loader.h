@@ -8,6 +8,7 @@
 #ifdef MP_DEMO
 #include "Modules\PrintPatches.h"
 #endif
+#include "Modules\Stats.h"
 
 namespace Loader
 {

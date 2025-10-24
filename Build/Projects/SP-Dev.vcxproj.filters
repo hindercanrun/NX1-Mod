@@ -89,6 +89,9 @@
     <ClCompile Include="..\..\Source\Components\Modules\GameLog.cpp">
       <Filter>Components\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\Components\Modules\Stats.cpp">
+      <Filter>Components\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Std_Include.h" />
@@ -183,6 +186,9 @@
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Components\Modules\GameLog.h">
+      <Filter>Components\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Components\Modules\Stats.h">
       <Filter>Components\Modules</Filter>
     </ClInclude>
   </ItemGroup>

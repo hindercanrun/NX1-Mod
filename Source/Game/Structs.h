@@ -289,4 +289,77 @@ union XAssetHeader
   FogDef *fogDef;*/
   void *data;
 };
+
+	struct GamerSettingCommonConfig
+	{
+		float viewSensitivity;
+		float snd_volume;
+		float blacklevel;
+		float gpadButtonLStickDeflect;
+		float gpadButtonRStickDeflect;
+		float safearea_adjusted_horizontal;
+		float safearea_adjusted_vertical;
+		int playTimeSP;
+		int playTimeMP;
+		int playTimeSO;
+		int percentCompleteSP;
+		int percentCompleteMP;
+		int percentCompleteSO;
+		float gamma;
+		bool hasEverPlayed_MainMenu;
+		bool hasEverPlayed_SP;
+		bool hasEverPlayed_SO;
+		bool hasEverPlayed_MP;
+		bool invertPitch;
+		bool autoAim;
+		bool delicateFlower;
+		bool gpadRumble;
+		int colorBlind;
+		float colorBlindIntensity;
+		char gpadButtonsConfig[32];
+		char gpadSticksConfig[32];
+	};
+
+	struct GamerSettingExeConfig
+	{
+		int playlist;
+		bool mapPrefs[16];
+		char motd[256];
+		char clanPrefix[5];
+	};
+
+	struct KeyPairStringData
+	{
+		short index;
+		short maxSize;
+	};
+
+	union KeyPairDataUnion
+	{
+		unsigned char byteVal;
+		bool boolVal;
+		short shortVal;
+		int intVal;
+		float floatVal;
+		KeyPairStringData stringData;
+	};
+
+	struct GamerSettingKeyPair
+	{
+		unsigned char type;
+		unsigned char unused[3];
+		KeyPairDataUnion u;
+	};
+
+	struct GamerSettingState
+	{
+		bool isProfileLoggedIn;
+		bool errorOnRead;
+		GamerSettingCommonConfig commonConfig;
+		GamerSettingKeyPair commonKeyPairs[50];
+		char commonKeyPairsStringPool[512];
+		GamerSettingExeConfig exeConfig;
+		GamerSettingKeyPair exeKeyPairs[50];
+		char exeKeyPairsStringPool[512];
+	};
 }
