@@ -14,21 +14,7 @@ namespace Patches
 			vsnprintf(buf, sizeof(buf), fmt, args);
 			va_end(args);
 
-			Symbols::SP_Dev::Com_Printf(0, "printf: %s", buf);
-		}
-
-		Util::Hook::Detour DbgPrint_Hook;
-		Util::Hook::Detour _DbgPrint_Hook;
-		void _DbgPrint(const char* fmt, ...)
-		{
-			char buf[256];
-
-			va_list args;
-			va_start(args, fmt);
-			vsnprintf(buf, sizeof(buf), fmt, args);
-			va_end(args);
-
-			Symbols::SP_Dev::Com_Printf(0, "DbgPrint: %s", buf);
+			Symbols::SP_Dev::Com_Printf(0, "%s", buf);
 		}
 
 		Util::Hook::Detour FS_InitFilesystem_Hook;
@@ -36,7 +22,7 @@ namespace Patches
 		{
 			DWORD start = GetTickCount(); // We could use Sys_Milliseconds here buuut GetTickCount works fine
 
-			Symbols::SP_Dev::Com_Printf(0, "\nLoading modules...\n"); // TODO: figure out why this dont print
+			Symbols::SP_Dev::Com_Printf(0, "Loading modules...\n"); // TODO: figure out why this dont print
 			for (int i = 0; i < Loader::g_moduleCount; ++i)
 			{
 				Symbols::SP_Dev::Com_Printf(0, "%d: %s\n", i + 1, Loader::g_modules[i].name);
@@ -65,6 +51,12 @@ namespace Patches
 			Invoke(localClientNum, configFile);
 		}
 
+		Util::Hook::Detour COM_PlayIntroMovies_Hook;
+		void COM_PlayIntroMovies()
+		{
+			Symbols::SP_Dev::Cbuf_AddText(0, "autocinematic title\n");
+		}
+
 		Util::Hook::Detour Com_Init_Hook;
 		void Com_Init(const char* p_command_line)
 		{
@@ -80,7 +72,13 @@ namespace Patches
 		Util::Hook::Detour getBuildNumber_Hook;
 		const char* getBuildNumber()
 		{
-			return Util::String::Va("NX1-Mod %i", GIT_COMMIT);
+			return Util::String::Va("NX1-Mod");
+		}
+
+		Util::Hook::Detour LSP_CheckOngoingTasks_Hook;
+		void LSP_CheckOngoingTasks(int PacketsInternal)
+		{
+			// null stub
 		}
 
 		Util::Hook::Detour MAssertVargs_Hook;
@@ -141,7 +139,7 @@ namespace Patches
 			Util::XBox::DmGetThreadInfoEx(threadId, &info);
 
 			const char* name = info.ThreadNameAddress;
-			snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
+			_snprintf(p_destBuffer, destBufferSize, "\"%s\", 0x%08x, HW Thread %d", name, threadId, info.CurrentProcessor);
 		}
 
 		void Cmd_NX1IsGay_f()
@@ -185,19 +183,18 @@ namespace Patches
 			Util::Hook::SetValue(0x8252119C, 0x60000000); // LiveAntiCheat_UserSignedOut
 			Util::Hook::SetValue(0x825CD10C, 0x60000000); // LiveAntiCheat_OnChallengesReceived
 
-			// detour printf to output to Com_Printf instead
+			// detour printf output to Com_Printf instead
 			printf_Hook.Create(printf, _printf);
 			_printf_Hook.Create(0x8277B188, _printf); // make sure we grab the games version too
-
-			// detour DbgPrint to output to Com_Printf instead
-			DbgPrint_Hook.Create(DbgPrint, _DbgPrint);
-			_DbgPrint_Hook.Create(0x827DD1FC, _DbgPrint); // make sure we grab the games version too
 
 			// print all our loaded modules
 			FS_InitFilesystem_Hook.Create(0x824C34F0, FS_InitFilesystem);
 
 			// prevent dupe config executions
 			Com_ExecStartupConfigs_Hook.Create(0x824296C0, Com_ExecStartupConfigs);
+
+			// play our own intro movie
+			COM_PlayIntroMovies_Hook.Create(0x82428EF0, COM_PlayIntroMovies);
 
 			Com_Init_Hook.Create(0x8242DB20, Com_Init);
 
@@ -209,6 +206,9 @@ namespace Patches
 
 			// set build version to mine!
 			getBuildNumber_Hook.Create(0x82410188, getBuildNumber);
+
+			// dont check any lsp tasks
+			LSP_CheckOngoingTasks_Hook.Create(0x825A2C68, LSP_CheckOngoingTasks);
 
 			// our custom assertion handler
 			MAssertVargs_Hook.Create(0x824BCD10, MAssertVargs);
@@ -232,6 +232,7 @@ namespace Patches
 			Util::Hook::SetValue(0x8242C98C, 0x60000000); // start $init
 			Util::Hook::SetValue(0x8242CA10, 0x60000000); // end $init
 			Util::Hook::SetValue(0x821E32EC, 0x60000000); // looking for alias
+			Util::Hook::SetValue(0x8242C908, 0x60000000); // com_init_tbf build version
 		}
 
 		void AssertRemovals()
@@ -249,7 +250,7 @@ namespace Patches
 
 			Util::Hook::SetString(0x8201F030, "%s > "); // uhh just make NX1-Mod look nicer
 			Util::Hook::SetString(0x8201F03C, "NX1-Mod"); // NX1 MODDING !!!!!!
-			Util::Hook::SetString(0x8201EEC4, Util::String::Va("Version: r%i", GIT_COMMIT)); // shorten that string!
+			Util::Hook::SetString(0x8201EEC4, "Build 1866586"); // shorten that string!
 			Util::Hook::SetString(0x82076B88, ""); // timestamp in console log
 		}
 
@@ -283,7 +284,9 @@ namespace Patches
 		{
 			FS_InitFilesystem_Hook.Clear();
 			Com_ExecStartupConfigs_Hook.Clear();
+			COM_PlayIntroMovies_Hook.Clear();
 			getBuildNumber_Hook.Clear();
+			LSP_CheckOngoingTasks_Hook.Clear();
 			MAssertVargs_Hook.Clear();
 			Sys_GetThreadName_Hook.Clear();
 			Cmd_Init_Hook.Clear();
@@ -342,6 +345,20 @@ namespace Patches
 			Invoke();
 		}
 
+		void PlayIntroMovie()
+		{
+			Symbols::MP_Demo::Cbuf_AddText(0, "autocinematic title\n");
+		}
+
+		Util::Hook::Detour Com_Init_Try_Block_Function_Hook;
+		void Com_Init_Try_Block_Function(const char* p_command_line)
+		{
+			auto Invoke = Com_Init_Try_Block_Function_Hook.Invoke<void(*)(const char*)>();
+			Invoke(p_command_line);
+
+			PlayIntroMovie();
+		}
+
 		Util::Hook::Detour DB_InflateInit_Hook;
 		void DB_InflateInit(int fileIsSecure)
 		{
@@ -396,6 +413,9 @@ namespace Patches
 			// print all our loaded modules
 			FS_InitFilesystem_Hook.Create(0x8235C2A8, FS_InitFilesystem);
 
+			// add a nice intro movie for when the game starts
+			Com_Init_Try_Block_Function_Hook.Create(0x822DC5A8, Com_Init_Try_Block_Function);
+
 			// allow unsigned fast files to load on MP
 			DB_InflateInit_Hook.Create(0x821CD728, DB_InflateInit);
 
@@ -446,6 +466,7 @@ namespace Patches
 		void ClearHooks()
 		{
 			FS_InitFilesystem_Hook.Clear();
+			Com_Init_Try_Block_Function_Hook.Clear();
 			DB_InflateInit_Hook.Clear();
 			getBuildNumber_Hook.Clear();
 			Cmd_Init_Hook.Clear();

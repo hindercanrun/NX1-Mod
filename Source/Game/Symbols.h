@@ -4,8 +4,6 @@ namespace Symbols
 {
 	namespace SP_Dev
 	{
-		// functions
-
 		typedef void (*Cmd_AddCommand_t)(const char* cmdName, void (__cdecl* function)(), Structs::cmd_function_s* allocedCmd);
 		extern Cmd_AddCommand_t Cmd_AddCommand;
 
@@ -14,6 +12,9 @@ namespace Symbols
 
 		typedef void (*Com_Printf_t)(int channel, const char* fmt, ...);
 		extern Com_Printf_t Com_Printf;
+
+		typedef void (*CL_ConsolePrint_t)(int localClientNum, int channel, const char* txt, int duration, int pixelWidth, int flags);
+		extern CL_ConsolePrint_t CL_ConsolePrint;
 
 		typedef BOOL (*Con_IsActive_t)(int localClientNum);
 		extern Con_IsActive_t Con_IsActive;
@@ -27,29 +28,19 @@ namespace Symbols
 		typedef BOOL (*DevGui_IsActive_t)();
 		extern DevGui_IsActive_t DevGui_IsActive;
 
-		typedef const Structs::dvar_t* (*Dvar_FindVar_t)(const char* dvarName);
-		extern Dvar_FindVar_t Dvar_FindVar;
-
 		typedef BOOL (*Key_IsCatcherActive_t)(int localClientNum, int mask);
 		extern Key_IsCatcherActive_t Key_IsCatcherActive;
+
+		typedef void (*I_strncpyz_t)(char* dest, const char* src, int destsize);
+		extern I_strncpyz_t I_strncpyz;
+
+		typedef const char* (*I_stristr_t)(const char* s0, const char* substr);
+		extern I_stristr_t I_stristr;
 
 		typedef void (*R_AddCmdDrawText_t)(const char* text, int maxChars, Structs::Font_s* font, float x, float y, float xScale, float yScale, float rotation, const float* colour, int style, Structs::EScreenLayer layer);
 		extern R_AddCmdDrawText_t R_AddCmdDrawText;
 
-		typedef DWORD (*Sys_Milliseconds_t)();
-		extern Sys_Milliseconds_t Sys_Milliseconds;
-
-		typedef DWORD (*Sys_MillisecondsRaw_t)();
-		extern Sys_MillisecondsRaw_t Sys_MillisecondsRaw;
-
-		// variables
-
 		extern Structs::CmdArgs* cmd_args;
-
-		extern Structs::DWLogonStatus* g_LogOnStatus;
-
-		extern Structs::GamerSettingState* gamerSettings;
-		extern unsigned int* g_playStartTime;
 
 		extern Structs::ScreenPlacement* scrPlaceFull;
 	}

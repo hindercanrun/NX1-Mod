@@ -3,13 +3,11 @@ void RegisterModules()
 	REGISTER_MODULE(Assets);
 	REGISTER_MODULE(Drawing);
 	REGISTER_MODULE(GameLog);
-	REGISTER_MODULE(Intro);
-	REGISTER_MODULE(Network);
 	REGISTER_MODULE(Patches);
-#ifdef MP_DEMO // Also add this to SP_DEMO when it get's supported
+
+#ifdef MP_DEMO
 	REGISTER_MODULE(PrintPatches);
 #endif
-	REGISTER_MODULE(Stats);
 }
 
 DWORD WINAPI MainThread(LPVOID)

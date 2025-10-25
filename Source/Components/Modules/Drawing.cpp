@@ -102,6 +102,7 @@ namespace Drawing
 			// disable some unneeded drawing
 			Util::Hook::SetValue(0x8221F894, 0x60000000); // CG_DrawVersion
 			Util::Hook::SetValue(0x824A6F3C, 0x60000000); // UI_DrawBuildNumber
+			Util::Hook::SetValue(0x8220CB80, 0x60000000); // Con_DrawOutputVersion
 
 			// change output box size
 			Util::Hook::SetValue(0x8201DF2C, 36.0f);
